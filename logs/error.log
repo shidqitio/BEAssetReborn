@@ -1,0 +1,304 @@
+[2023-11-02T11:14:29.127] [ERROR] error - CustomError: Data BAST Unit Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:109:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:15:12.135] [ERROR] error - CustomError: Data BAST Unit Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:109:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:19:27.253] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:19:32.507] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:21:41.607] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:21:43.612] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:22:41.192] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:23:34.871] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:24:07.330] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:25:00.569] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:25:03.975] [ERROR] error - CustomError: Data Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:208:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'error'
+}
+[2023-11-02T11:25:28.261] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:26:38.987] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:27:15.948] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:27:41.478] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:29:26.596] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:29:29.158] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:32:01.502] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:32:04.591] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:32:56.436] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:32:59.961] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:34:40.461] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:35:12.734] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:35:25.627] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:35:39.016] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:36:51.962] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:37:03.985] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:37:41.591] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:39:13.285] [ERROR] error - CustomError: Unknown column 'TrxBarangPersediaanDetail.DESC' in 'order clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:39:31.046] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:40:42.990] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:40:59.998] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:41:20.951] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:41:36.047] [ERROR] error - CustomError: Cannot read properties of null (reading 'kode_urut')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:42:03.329] [ERROR] error - CustomError: Validation error
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:42:40.868] [ERROR] error - CustomError: Validation error
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:43:08.359] [ERROR] error - CustomError: Validation error
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-11-02T11:43:26.719] [ERROR] error - CustomError: Validation error
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:168:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
