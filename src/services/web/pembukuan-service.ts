@@ -6,6 +6,7 @@ import { DaftarBarangRequest } from "../../controllers/web/daftarbarang-controll
 import { Op } from "sequelize";
 import generatenumber from "../../utils/generatenumber";
 import db from "../../config/database";
+import RefRuang from "../../models/ruang-model";
 
 const getPembukuan =async (
     page:number, 
@@ -163,7 +164,38 @@ const storePembukuan =async (
     }
 }
 
+const antrianNup =async () : Promise<[any | null, any | null]> => {
+    try {
+        const pembukuan : RefPembukuan[] = await RefPembukuan.findAll({
+            attributes : {exclude : ["ucr", "uch", "udcr", "udch"]},
+            include : [
+                {
+                    model : DaftarBarang,
+                    as : "daftarbarang",
+                    where : {
+                        kode_asset_nup : {
+                            [Op.eq] : null
+                        }
+                    },
+                    attributes : {exclude : ["ucr","uch", "udcr", "udch"]},
+                    include : [
+                        {
+                            model : RefRuang,
+                            as : 'refruang',
+                            attributes : {exclude : ["ucr","uch","udcr","udch"]}
+                        }
+                    ]
+                },
+            ]
+        })
+        return [pembukuan, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     getPembukuan,
+    antrianNup,
     storePembukuan
 }

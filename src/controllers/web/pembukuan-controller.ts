@@ -103,6 +103,26 @@ const storePembukuan =async (
     }
 }
 
+const antrianNup =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const [pembukuan, err] : [PembukuanResponse, IErrorResponse] = await pembukuanService.antrianNup()
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, pembukuan)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
-    storePembukuan
+    getPembukuan,
+    storePembukuan,
+    antrianNup
 }

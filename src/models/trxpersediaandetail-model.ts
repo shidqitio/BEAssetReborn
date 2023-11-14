@@ -6,9 +6,9 @@ import db from "../config/database";
 
 
 export enum pakai_unit {
-   option1 = "Gudang",
-   option2 = "Unit",
-   option3 = "SiapPakai"
+   option1 ="Gudang",
+   option2 ="Unit",
+   option3 ="SiapPakai"
 }
 
 export enum status_pemakaian {

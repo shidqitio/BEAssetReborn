@@ -129,6 +129,7 @@ const updateNup =async (
     }
 }
 
+
 export default {
     updateNup
 }
