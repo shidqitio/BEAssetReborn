@@ -121,8 +121,29 @@ const antrianNup =async (
     }
 }
 
+const antrianNupDetail =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const kode = req.params.id
+
+        const [pembukuan, err] : [PembukuanResponse, IErrorResponse] = await pembukuanService.antrianNupDetail(kode)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, pembukuan)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     getPembukuan,
     storePembukuan,
-    antrianNup
+    antrianNup,
+    antrianNupDetail
 }

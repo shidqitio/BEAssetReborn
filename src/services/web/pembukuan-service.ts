@@ -195,8 +195,47 @@ const antrianNup =async () : Promise<[any | null, any | null]> => {
     }
 }
 
+const antrianNupDetail =async (kode : string) : Promise<[any | null, any | null]> => {
+    try {
+        const pembukuan : RefPembukuan | null = await RefPembukuan.findOne({
+            where : {
+                kode_pembukuan : kode
+            },
+            attributes : {exclude : ["ucr", "uch", "udcr", "udch"]},
+            include : [
+                {
+                    model : DaftarBarang,
+                    as : "daftarbarang",
+                    where : {
+                        kode_asset_nup : {
+                            [Op.eq] : null
+                        }
+                    },
+                    attributes : {exclude : ["ucr","uch", "udcr", "udch"]},
+                    include : [
+                        {
+                            model : RefRuang,
+                            as : 'refruang',
+                            attributes : {exclude : ["ucr","uch","udcr","udch"]}
+                        }
+                    ]
+                },
+            ]
+        })
+
+        if(!pembukuan) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        return [pembukuan, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     getPembukuan,
     antrianNup,
-    storePembukuan
+    storePembukuan,
+    antrianNupDetail
 }
