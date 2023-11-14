@@ -137,6 +137,7 @@ const storePembukuan =async (
             },
             transaction : t
         })
+        
 
         console.log("============ STEP 3 ===================")
         console.log("Count : ", countpembukuan)
