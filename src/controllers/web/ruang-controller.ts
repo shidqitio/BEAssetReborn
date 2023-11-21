@@ -74,6 +74,26 @@ const getRuangByUnit =async (
     }
 }
 
+const assetByRuang =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode = req.params.id
+
+        const [ruang, err] : [RuangResponse, IErrorResponse] = await ruangService.assetByRuang(kode)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, ruang)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 const storeRuang =async (
     req:Request,
     res:Response,
@@ -151,6 +171,7 @@ const deleteRuang =async (
 export default {
     storeRuang,
     getRuangByUnit, 
+    assetByRuang,
     getRuangAll,
     updateRuang,
     deleteRuang

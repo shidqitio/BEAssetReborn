@@ -136,11 +136,39 @@ const deleteRuang =async (
     }
 }
 
+const assetByRuang =async (
+    kode:string) : Promise<[any | null, any | null]> => {
+        try {
+            const ruang : RefRuang[] = await RefRuang.findAll({
+                attributes : {exclude : ['udcr','udch']},
+                where : {
+                    kode_ruang : kode
+                },
+                include : [
+                    {
+                        model : DaftarBarang,
+                        as : "daftarbarang", 
+                        attributes : {exclude : ["udcr", "udch"]}
+                    }
+                ]
+            })
+    
+            if(ruang.length === 0) {
+                return [null, {code : 409, message : "Data Tidak Ada"}]
+            }
+    
+            return [ruang, null]
+        } catch (error : any) {
+            return [null, {code : 500, message : error.message}]
+        }
+}
+
 export default {
     getRuangAll,
     getRuangByUnit,
     storeRuang,
     updateRuang,
-    deleteRuang
+    deleteRuang,
+    assetByRuang
 }
 

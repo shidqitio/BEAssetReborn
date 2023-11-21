@@ -6,6 +6,8 @@ routes.get("/", ruangController.getRuangAll)
 
 routes.get("/unit/:id",ruangController.getRuangByUnit)
 
+routes.get("/asset-ruang/:id", ruangController.assetByRuang)
+
 routes.post("/",ruangController.storeRuang)
 
 routes.put("/update-ruang/:id", ruangController.updateRuang)
