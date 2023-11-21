@@ -207,7 +207,33 @@ const updateNup =async (
     }
 }
 
+const barangbyId =async (
+  kode:string) : Promise<[any | null, any | null]> => {
+  try {
+      const barang:RefPembukuan | null = await RefPembukuan.findOne({
+        attributes : {exclude : ["ucr", "uch", "udcr", "udch"]},
+        include : [
+          {
+            model : DaftarBarang,
+            as : 'daftarbarang',
+            attributes :  {exclude : ["ucr", "uch", "udcr", "udch"]},
+            where : {
+              nup : kode
+            }
+          }
+        ]
+      })
+      if (!barang) {
+        return [null, {code : 409, message : "Data Tidak Ada"}]
+      }
+
+      return [barang, null]
+  } catch (error : any) {
+      return [null, {code : 500, message : error.message}]
+  }
+}
 
 export default {
-    updateNup
+    updateNup,
+    barangbyId
 }

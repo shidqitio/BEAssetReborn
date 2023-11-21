@@ -58,8 +58,28 @@ const updateNup =async (
     }
 }
 
+const barangbyId =async (
+	req : Request,
+	res : Response, 
+	next : NextFunction) : Promise <void> => {
+	try {
+		const kode = req.params.id
+
+		const [Barang, err] : [DaftarBarangRequest,IErrorResponse] = await daftarbarangService.barangbyId(kode)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 200, Barang)
+
+	} catch (error) {
+		next(error)
+	}
+}
 
 
 export default {
-    updateNup
+    updateNup,
+	barangbyId
 }
