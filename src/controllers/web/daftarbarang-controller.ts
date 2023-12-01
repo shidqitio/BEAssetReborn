@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, request } from "express";
 import pembukuanService from "../../services/web/pembukuan-service";
 import CustomError, {IErrorResponse} from "../../middlewares/error-handler";
 import { responseSuccess } from "../../utils/response-success";
@@ -78,8 +78,28 @@ const barangbyId =async (
 	}
 }
 
+const ubahKondisiBarang =async (
+	req:Request,
+	res: Response,
+	next: NextFunction) : Promise<void> => {
+	try {
+		const kode : string = req.params.id
+		const request : DaftarBarangRequest = req.body 
+
+		const [UbahBarang,err] : [DaftarBarangRequest,IErrorResponse] = await daftarbarangService.ubahKondisiBarang(kode, request)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 204, UbahBarang)
+	} catch (error) {
+		next(error)
+	}
+}
 
 export default {
     updateNup,
-	barangbyId
+	barangbyId,
+	ubahKondisiBarang
 }

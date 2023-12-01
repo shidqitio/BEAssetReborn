@@ -2,15 +2,23 @@ import { DataTypes, Model, Optional } from "sequelize";
 import db from "../config/database";
 import RefPembukuan from "./pembukuan-model";
 import RefRuang from "./ruang-model";
+import RefAsset from "./asset-model";
 
 export enum DasarHarga {
     "Perolehan", 
-    "Taksiran"
+    "Taksiran",
+    "Migrasi Aset"
 }
 
 export enum MetodePenyusutan {
     "Straight Line",
-    "Double Decline"
+    "Double Decline",
+}
+
+export enum Kondisi {
+     Baik = "Baik",
+     RusakRingan = "Rusak Ringan", 
+     RusakBerat = "Rusak Berat"
 }
 
 export interface IDaftarbarangAttributes {
@@ -25,13 +33,17 @@ export interface IDaftarbarangAttributes {
 	kd_ruang : number,
 	deskripsi : string,
 	nilai_item : number,
-	kondisi : string,
+	kondisi : Kondisi,
 	optional_key : string,
 	qr_kode : string,
 	alasan : string,
 	umur_ekonomis : string,
 	dasar_harga : DasarHarga,
 	metode_penyusutan : MetodePenyusutan,
+    nup_lama : number,
+    kode_asset_lama : string, 
+    nama_barang_lama : string,
+    status_barang : number | null,
 	ucr : string,
 	uch : string,
 	udcr? : Date | undefined,
@@ -45,7 +57,8 @@ IDaftarbarangAttributes,
 "kode_barang"|
 "kode_asset_nup"|
 "kode_pembukuan"|
-"tanggal_perolehan"
+"tanggal_perolehan"| 
+"kondisi"
 >;
 
 class DaftarBarang 
@@ -62,13 +75,17 @@ implements IDaftarbarangAttributes {
 	declare kd_ruang : number;
 	declare deskripsi : string;
 	declare nilai_item : number;
-	declare kondisi : string;
+	declare kondisi : Kondisi;
 	declare optional_key : string;
 	declare qr_kode : string;
 	declare alasan : string;
 	declare umur_ekonomis : string;
 	declare dasar_harga : DasarHarga;
 	declare metode_penyusutan : MetodePenyusutan;
+    declare nup_lama : number ;
+    declare kode_asset_lama : string;
+    declare nama_barang_lama : string ;
+    declare status_barang : number | null;
 	declare ucr : string;
 	declare uch : string;
 	declare udcr? : Date | undefined;
@@ -124,7 +141,7 @@ DaftarBarang.init (
             allowNull : true
         },
         kondisi : {
-            type : DataTypes.STRING(),
+            type : DataTypes.ENUM('Baik','Rusak Ringan', 'Rusak Berat'),
             allowNull : true
         },
         optional_key : {
@@ -144,12 +161,29 @@ DaftarBarang.init (
             allowNull : true
         },
         dasar_harga : {
-            type : DataTypes.ENUM( "Perolehan", "Taksiran"),
+            type : DataTypes.ENUM( "Perolehan", "Taksiran", "Migrasi Aset"),
             allowNull : true
         },
         metode_penyusutan : {
             type : DataTypes.ENUM("Straight Line", "Double Decline"),
             allowNull : true
+        },
+        nup_lama : {
+            type : DataTypes.INTEGER(),
+            allowNull : true
+        },
+        kode_asset_lama : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        nama_barang_lama : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        status_barang : {
+            type : DataTypes.INTEGER(),
+            allowNull : true,
+            defaultValue : 0
         },
         ucr : {
             type : DataTypes.STRING(),
@@ -196,6 +230,16 @@ DaftarBarang.belongsTo(RefRuang, {
 RefRuang.hasMany(DaftarBarang, {
     foreignKey : "kode_ruang",
     as : "daftarbarang"
+})
+
+DaftarBarang.belongsTo(RefAsset,{
+    foreignKey : "kode_asset",
+    as : 'refasset'
+})
+
+RefAsset.hasMany(DaftarBarang,{
+    foreignKey : 'kode_asset',
+    as : 'daftarbarang'
 })
 
 export default DaftarBarang

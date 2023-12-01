@@ -31,7 +31,11 @@ export const errorhandler = (
     } else {
       return res
         .status(500)
-        .json({ code: 500, status: "error", message: error.message });
+        .json({ code: 500, status: "error", error: [
+          {
+            message : error.message
+          }
+        ]});
     }
   };
   

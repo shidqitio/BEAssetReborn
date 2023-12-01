@@ -11,11 +11,11 @@ export interface IPembukuanAttributes  {
 	no_bukti_perolehan : string,
 	tanggal_perolehan? : Date | undefined,
 	tanggal_pembukuan? : Date | undefined,
-	keterangan : string,
+	keterangan : string | null,
 	total_nilai : number,
-	pdf : string,
-	ucr : string,
-	uch : string,
+	pdf : string | null,
+	ucr : string | null,
+	uch : string | null,
 	udch? : Date | undefined,
 	udcr? : Date | undefined,
 }
@@ -30,11 +30,11 @@ implements IPembukuanAttributes {
 	declare no_bukti_perolehan : string;
 	declare tanggal_perolehan? : Date | undefined;
 	declare tanggal_pembukuan? : Date | undefined;
-	declare keterangan : string;
+	declare keterangan : string | null;
 	declare total_nilai : number;
-	declare pdf : string;
-	declare ucr : string;
-	declare uch : string;
+	declare pdf : string | null;
+	declare ucr : string | null;
+	declare uch : string | null;
 	declare udch? : Date | undefined;
 	declare udcr? : Date | undefined;
 }

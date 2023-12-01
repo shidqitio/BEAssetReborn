@@ -1,4 +1,4 @@
-import DaftarBarang from "../../models/daftarbarang-model";
+import DaftarBarang, { Kondisi } from "../../models/daftarbarang-model";
 import RefPembukuan from "../../models/pembukuan-model";
 import RefAsset from "../../models/asset-model";
 import { DaftarBarangRequest, DaftarBarangUpdate } from "../../controllers/web/daftarbarang-controller";
@@ -10,6 +10,7 @@ import TrxPenyusutan from "../../models/trx_penyusutan-model";
 import dotenv from "dotenv"
 dotenv.config()
 import path from "path"
+
 
 const updateNup =async (
     kode_pembukuan:string,
@@ -233,7 +234,80 @@ const barangbyId =async (
   }
 }
 
+const ubahKondisiBarang =async (
+  kode:string, request:DaftarBarangRequest) : Promise<[any | null, any | null]> => {
+    try {
+        const exDaftarBarang : DaftarBarang | null = await DaftarBarang.findOne({
+          where : {
+            nup : kode
+          }
+        })
+
+        if(!exDaftarBarang) {
+          return [null, {code : 409, message : "Data Tidak Ada"}]
+        }
+
+        // const updateDaftarBarang : any = await DaftarBarang.update({
+        //   kondisi : request.kondisi,
+        //   alasan : request.alasan
+        // }, {
+        //   where : {
+        //     nup : kode
+        //   }
+        // })
+
+        const kondisiEnum: Kondisi = Kondisi[request.kondisi as keyof typeof Kondisi];
+
+        exDaftarBarang.kondisi = kondisiEnum
+        exDaftarBarang.alasan = request.alasan
+
+       
+        await exDaftarBarang.save()
+
+        return [exDaftarBarang, null]
+
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+
+const pindahRuang =async (
+  kode:string, request : DaftarBarangRequest)  : Promise<[any | null, any | null]>  => {
+   try {
+    const exDaftarBarang : DaftarBarang | null = await DaftarBarang.findOne({
+      where : {
+        nup : kode
+      }
+    })
+
+    if(!exDaftarBarang) {
+      return [null, {code : 409, message : "Data Tidak Ada"}]
+    }
+
+    const updateDaftarBarang : any = await DaftarBarang.update({
+      kd_ruang : request.kd_ruang,
+      kode_ruang : request.kode_ruang
+    }, {
+      where : {
+        nup : kode
+      }
+    })
+
+    if(!updateDaftarBarang) {
+      return [null, {code : 409, message : "Data Gagal Update"}]
+    }
+
+    return [exDaftarBarang, null]
+
+   } catch (error : any) {
+    return [null, {code : 500, message : error.message}]
+   }
+}
+
 export default {
     updateNup,
-    barangbyId
+    barangbyId,
+    ubahKondisiBarang,
+    pindahRuang
 }
