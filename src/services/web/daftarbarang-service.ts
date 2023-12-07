@@ -305,9 +305,56 @@ const pindahRuang =async (
    }
 }
 
+const detailBarangbyRuang =async (
+  kode:number, kode_unit: string, status :number, page : number, limit : number) : Promise<[any | null, any | null]> => {
+  try {
+
+      let offset = 0 ;
+
+      if(page > 1 ) {
+          offset = (page - 1) * limit ;
+      }
+
+      const barang : DaftarBarang[] = await DaftarBarang.findAll({
+        where : {
+          status_barang : status,
+          kode_asset_nup : {
+            [Op.not] : null
+          }
+        },
+        attributes : {exclude : ["ucr", "uch", "udcr", "udch"]},
+        include : [
+          {
+            model : RefRuang, 
+            as : "refruang",
+            attributes : {exclude : ['ucr','uch','udcr','udch']},
+            where : {
+              kode_ruang : kode,
+              kode_unit : kode_unit
+            },
+            required : true
+          },
+        ],
+        limit : limit,
+        offset : offset
+      })
+
+      if(!barang) {
+        return [null, {code : 499, message : "Daftar Barang Tidak Ada"}]
+      }
+
+      return [barang, null]
+     
+  } catch (error : any) {
+      return [null, {code : 500, message : error.message}]
+  }
+}
+
+
 export default {
     updateNup,
     barangbyId,
     ubahKondisiBarang,
-    pindahRuang
+    pindahRuang,
+    detailBarangbyRuang
 }

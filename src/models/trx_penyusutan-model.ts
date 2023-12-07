@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import db from "../config/database";
+import DaftarBarang from "./daftarbarang-model";
 
 export interface ITrxPenyusutan {
     kode_penyusutan : number,
@@ -47,15 +48,15 @@ implements ITrxPenyusutan {
 
 TrxPenyusutan.init(
     {
+        nup : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
         kode_penyusutan : {
             type : DataTypes.STRING(),
             allowNull : false, 
             primaryKey : true,
             autoIncrement : true
-        },
-        nup : {
-            type : DataTypes.STRING(),
-            allowNull : false
         },
 	    nilai_item : {
             type : DataTypes.DECIMAL(),
@@ -107,5 +108,15 @@ TrxPenyusutan.init(
         updatedAt : "udch"
     }
 )
+
+TrxPenyusutan.belongsTo(DaftarBarang, {
+    foreignKey : "nup",
+    as : "daftarbarang"
+})
+
+DaftarBarang.hasMany(TrxPenyusutan, {
+    foreignKey : 'nup',
+    as : 'trxpenyusutan'
+})
 
 export default TrxPenyusutan

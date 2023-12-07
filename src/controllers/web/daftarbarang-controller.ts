@@ -98,8 +98,33 @@ const ubahKondisiBarang =async (
 	}
 }
 
+const detailBarangbyRuang =async (
+	req:Request,
+	res:Response,
+	next:NextFunction) : Promise<void> => {
+	try {
+		const page:number = parseInt(req.query.page as string, 10) || 1; 
+        const limit: number = parseInt(req.query.limit as string, 10) || 10;
+		const kode : number = parseInt(req.params.id1)
+		const status : number = parseInt(req.params.id2)
+		const kode_unit :string = req.params.kode_unit
+
+		const [DaftarBarang, err] : [DaftarBarangRequest,IErrorResponse] = 
+		await daftarbarangService.detailBarangbyRuang(kode, kode_unit, status, page, limit)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+		
+		responseSuccess(res, 200, DaftarBarang)
+	} catch (error) {
+		next(error)
+	}
+}
+
 export default {
     updateNup,
 	barangbyId,
-	ubahKondisiBarang
+	ubahKondisiBarang,
+	detailBarangbyRuang
 }

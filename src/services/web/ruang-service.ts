@@ -163,14 +163,7 @@ const assetByRuang =async (
         }
 }
 
-const detailBarangbyRuang =async (
-    kode:number) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-}
+
 
 export default {
     getRuangAll,
@@ -178,6 +171,6 @@ export default {
     storeRuang,
     updateRuang,
     deleteRuang,
-    assetByRuang
+    assetByRuang,
 }
 

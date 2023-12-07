@@ -1,140 +1,84 @@
-[2023-12-01T10:52:10.228] [ERROR] error - Error: no_sppa Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T10:56:07.635] [ERROR] error - Error: no_sppa Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T10:58:57.617] [ERROR] error - Error: no_sppa Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T10:59:09.865] [ERROR] error - Error: no_sppa Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:04:16.745] [ERROR] error - Error: no_sppa Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:04:55.437] [ERROR] error - Error: deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:05:38.835] [ERROR] error - Error: deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong, deskripsi Tidak Boleh Kosong
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:06:06.588] [ERROR] error - Error: [object Object],[object Object],[object Object]
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:06:22.518] [ERROR] error - Error: [object Object],[object Object],[object Object],[object Object]
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:06:36.397] [ERROR] error - Error: [object Object],[object Object],[object Object]
-    at validate (D:\Dev SIPPP\RebuildAsset\src\schema\validate.ts:6:19)
-    at Layer.handle [as handle_request] (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\layer.js:95:5)
-    at next (D:\Dev SIPPP\RebuildAsset\node_modules\express\lib\router\route.js:144:13)
-    at middleware (D:\Dev SIPPP\RebuildAsset\node_modules\express-validator\src\middlewares\check.js:16:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2023-12-01T11:15:18.532] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
+[2023-12-07T01:35:19.877] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:99:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:37:26.287] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:37:27.993] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:37:37.105] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:38:59.416] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:39:00.200] [ERROR] error - CustomError: notNull Violation: TrxInventarisasi.kode_trx_inventarisasi cannot be null,
+string violation: udcr cannot be an array or an object,
+string violation: udch cannot be an array or an object
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-07T01:59:06.417] [ERROR] error - CustomError: Data Sudah Ada
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:96:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 499,
   status: 'error'
 }
-[2023-12-01T11:15:23.152] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
+[2023-12-07T15:53:05.063] [ERROR] error - CustomError: TrxPerhitunganPenyusutan is not associated to DaftarBarang!
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:116:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
+  code: 500,
   status: 'error'
 }
-[2023-12-01T11:15:26.480] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
+[2023-12-07T16:20:11.852] [ERROR] error - CustomError: Unknown column 'trx_penyusutuan.nup' in 'on clause'
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:116:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:27.225] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:27.742] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:28.271] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:28.786] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:29.360] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:15:40.950] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-01T11:16:03.949] [ERROR] error - CustomError: Data Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:134:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\pembukuan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
+  code: 500,
   status: 'error'
 }
