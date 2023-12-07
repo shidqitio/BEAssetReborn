@@ -30,6 +30,7 @@ export interface ITrxInventarisasiAttributes {
 	merk : string | null,
 	kondisi : Kondisi | null,
 	keterangan : string | null,
+    file : string | null,
 	ucr : string | null,
 	uch : string | null,
 	udcr : Date | undefined,
@@ -54,6 +55,7 @@ implements ITrxInventarisasiAttributes {
 	declare merk : string | null;
 	declare kondisi : Kondisi ;
 	declare keterangan : string | null;
+    declare file : string | null;
 	declare ucr : string | null;
 	declare uch : string | null;
 	declare udcr : Date | undefined;
@@ -117,6 +119,10 @@ TrxInventarisasi.init (
             allowNull : true
         },
 	    keterangan : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        file : {
             type : DataTypes.STRING(),
             allowNull : true
         },

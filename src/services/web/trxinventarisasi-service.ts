@@ -6,7 +6,9 @@ import { Op, QueryTypes } from "sequelize";
 import RefRuang from "../../models/ruang-model";
 import TrxPenyusutan from "../../models/trx_penyusutan-model";
 import sequelize from "sequelize";
-
+import { removeFile, removeFileName } from "../../utils/remove-file";
+import dotenv from "dotenv"
+dotenv.config()
 
 
 const BarangDitemukan =async (
@@ -155,9 +157,65 @@ const detailBarangInventarisasi =async (
     }
 }
 
+const BatalDitemukan =async (
+    nup:string) :  Promise<[any | null, any | null]> => {
+    try {
+        const exDaftarBarang : DaftarBarang | null = await DaftarBarang.findOne({
+            where : {
+                nup : nup 
+            },
+            attributes : {exclude : ["ucr","uch","udcr","udch"]}
+        })
+        if (!exDaftarBarang) {
+            return [null, {code : 499, message : "Data Tidak Ditemukan"}]
+        }
+
+        exDaftarBarang.status_barang = 0
+
+        await exDaftarBarang.save()
+
+        return[exDaftarBarang, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const TambahInventarisasi =
+async (request:TrxInventarisasiRequest, file : any) :  Promise<[any | null, any | null]>  => {
+    try {
+        const PUBLIC_FILE_BARANG = `${process.env.HOST_ASSET}/${file.filename}`
+
+        console.log("TES ", PUBLIC_FILE_BARANG)
+        const kondisiEnum: Kondisi = Kondisi[request.kondisi as keyof typeof Kondisi];
+        
+        const newDataInventarisasi : TrxInventarisasi = await TrxInventarisasi.create({
+            kode_asset : request.kode_asset,
+            jenis_usulan :  JenisUsulan.identifikasi,
+            status : 0,
+            kode_ruang : request.kode_ruang,
+            tahun_perolehan : request.tahun_perolehan,
+            merk : request.merk,
+            file : PUBLIC_FILE_BARANG,
+            kondisi : kondisiEnum,
+            keterangan : request.keterangan
+        })
+
+        if(!newDataInventarisasi) {
+            return [null, {code : 409, message : "Data Gagal Insert"}]
+        }
+
+        return [newDataInventarisasi, null]
+
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     BarangDitemukan, 
     BarangTidakDitemukan,
+    BatalDitemukan,
     viewInventarisasiBarang,
-    detailBarangInventarisasi
+    detailBarangInventarisasi,
+    TambahInventarisasi
 }

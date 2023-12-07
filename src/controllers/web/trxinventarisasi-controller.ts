@@ -18,6 +18,7 @@ export type TrxInventarisasiRequest = {
 	merk? : string | null
 	kondisi? : string | null
 	keterangan? : string | null
+    file? : string | null
 	ucr? : string | null
 	uch? : string | null
 }
@@ -37,6 +38,7 @@ export type TrxInventarisasiResponse = {
 	merk? : string | null
 	kondisi? : string | null
 	keterangan? : string | null
+    file? : string | null
 	ucr? : string | null
 	uch? : string | null
 	udcr? : Date | undefined
@@ -122,10 +124,52 @@ const detailBarangInventarisasi =async (
     }
 }
 
+const BatalDitemukan =async (
+    req:Request,
+    res:Response,
+    next : NextFunction
+    ) : Promise<void> => {
+    try {
+        const nup : string = req.params.nup
+
+        const [Inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] 
+        = await trxinventarisasiService.BatalDitemukan(nup)
+        
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 203, Inventarisasi)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const TambahInventarisasi =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : TrxInventarisasiRequest = req.body
+
+        const [inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] = 
+        await trxinventarisasiService.TambahInventarisasi(request, req.file)
+        console.log("TES DATA = ", req.file)
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 202, inventarisasi)
+    } catch (error : any) {
+        next(error)
+    }
+}
 
 export default {
     viewInventarisasiBarang, 
     BarangDitemukan, 
     BarangTidakDitemukan,
-    detailBarangInventarisasi
+    detailBarangInventarisasi,
+    BatalDitemukan,
+    TambahInventarisasi
 }

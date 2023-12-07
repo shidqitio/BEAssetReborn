@@ -8,4 +8,6 @@ routes.put("/nup/:id", daftarbarangController.updateNup);
 routes.put("/ubah-kondisi/:id", daftarbarangController.ubahKondisiBarang)
 
 
+
+
 export default routes
