@@ -384,7 +384,11 @@ const detailBarangUnit =async (
                 kode_gudang : request.kode_gudang,
                 pakai_unit : pakai_unit.option1
             }, {transaction : t})
+            if(!insert_barang) {
+                return [null, {code : 409, message : "Data Gagal Insert"}]
+            }
         }
+        
     
         await t.commit()
         return [BarangHeader, null]
