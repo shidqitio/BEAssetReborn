@@ -2,14 +2,16 @@ import DaftarBarang, { Kondisi } from "../../models/daftarbarang-model";
 import RefPembukuan from "../../models/pembukuan-model";
 import RefAsset from "../../models/asset-model";
 import { DaftarBarangRequest, DaftarBarangUpdate } from "../../controllers/web/daftarbarang-controller";
-import { Op } from "sequelize";
+import { Op, QueryTypes } from "sequelize";
 import db from "../../config/database";
 import RefRuang from "../../models/ruang-model";
 import qrcode from "qrcode";
 import TrxPenyusutan from "../../models/trx_penyusutan-model";
 import dotenv from "dotenv"
+import sequelize from "sequelize";
 dotenv.config()
 import path from "path"
+import moment from 'moment';
 
 
 const updateNup =async (
@@ -211,6 +213,7 @@ const updateNup =async (
 const barangbyId =async (
   kode:string) : Promise<[any | null, any | null]> => {
   try {
+    let currentYear = moment().year()
       const barang:RefPembukuan | null = await RefPembukuan.findOne({
         attributes : {exclude : ["ucr", "uch", "udcr", "udch"]},
         include : [
@@ -220,7 +223,23 @@ const barangbyId =async (
             attributes :  {exclude : ["ucr", "uch", "udcr", "udch"]},
             where : {
               nup : kode
-            }
+            },
+            include  : [
+              {
+                model : RefRuang,
+                as : 'refruang',
+                attributes : {exclude : ['udcr','udch','ucr','uch', 'nama_pj','nip']}
+              },
+              {
+                model : TrxPenyusutan,
+                as : "trxpenyusutan",
+                attributes : {exclude : ['ucr','uch','udcr','udch']},
+                on : {
+                  nup : sequelize.where(sequelize.col(`daftarbarang.nup`),`=`, sequelize.col('daftarbarang.trxpenyusutan.nup'))
+                },
+                required : false
+              }
+            ]
           }
         ]
       })
@@ -394,6 +413,32 @@ const detailByBarang =async (
   }
 }
 
+const hitungKode4 =async () : Promise<[any | null, any | null]>  => {
+  try {
+      const SumAsset : DaftarBarang[] = 
+        await db.query(`SELECT COALESCE(SUM(nilai_item), 0), a.kode_asset_4 FROM 
+        ref_asset_baru_4 a 
+        left JOIN ref_asset_baru_5 b ON a.kode_asset_4 = b.kode_asset_4
+        left JOIN ref_asset_baru_6 c ON b.kode_asset_5 = c.kode_asset_5
+        left JOIN ref_asset d ON c.kode_asset_6 = d.kode_asset_6
+        left JOIN ref_daftar_barang e ON d.kode_asset = e.kode_asset
+        GROUP BY a.kode_asset_4
+        WHERE e.nup IS NOT NULL`,
+        {
+          type : QueryTypes.SELECT
+        }
+        )
+
+        if(SumAsset.length === 0 ){
+          return [null, {code : 499, message : "Data Tidak Ada"}]
+      }
+      
+
+      return [SumAsset[0], null]
+  } catch (error : any) {
+    return [null, {code : 500, message : error.message}]
+  }
+}
 
 export default {
     updateNup,
@@ -401,5 +446,6 @@ export default {
     ubahKondisiBarang,
     pindahRuang,
     detailBarangbyRuang,
-    detailByBarang
+    detailByBarang,
+    hitungKode4
 }

@@ -145,12 +145,28 @@ const detailByBarang =async (
 	}
 }
 
+const hitungKode4 =async (
+	req:Request,
+	res:Response,
+	next:NextFunction) : Promise<void> => {
+	try {
+		const [totalAsset, err] : [any, IErrorResponse] = await daftarbarangService.hitungKode4()
 
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200,totalAsset)
+	} catch (error) {
+		next(error)
+	}
+}
 
 export default {
     updateNup,
 	barangbyId,
 	ubahKondisiBarang,
 	detailBarangbyRuang,
-	detailByBarang
+	detailByBarang,
+	hitungKode4
 }

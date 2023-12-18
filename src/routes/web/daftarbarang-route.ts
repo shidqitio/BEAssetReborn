@@ -8,6 +8,8 @@ routes.get("/daftar-barang/barang/:id1/:kode_unit",daftarbarangController.detail
 routes.put("/nup/:id", daftarbarangController.updateNup);
 routes.put("/ubah-kondisi/:id", daftarbarangController.ubahKondisiBarang)
 
+routes.get("/daftar-barang/hitung-coa", daftarbarangController.hitungKode4)
+
 
 
 
