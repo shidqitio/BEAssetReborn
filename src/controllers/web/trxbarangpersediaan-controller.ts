@@ -10,10 +10,26 @@ export type BarangPromise = {
         kode_barang : string,
         nomor_dokumen : string,
         nama_barang : string,
-        jumlah : number,
-        harga_satuan : number,
+        jumlah : any,
+        harga_satuan : any,
         total : number,
         ucr : string
+}
+
+export type BarangExcelRequest = {
+        kode_barang : string | null
+        nama_barang : string | null
+        jumlah : number | null
+        harga_satuan : any
+        total : any
+        nomor_dokumen : string | null
+        kode_barang_persediaan : string | null
+        satuan : string | null
+        tahun : string | null
+        keterangan : string | null
+        kuantitas : any
+        kode_unit : string | null
+        PersediaanDetail : []
 }
 
 export type BarangPromiseRequest = {
@@ -23,8 +39,10 @@ export type BarangPromiseRequest = {
         status : string,
         tanggal_pembukuan : Date | undefined,
         ucr : string,
-        alasan : Text,
-        BarangPromise : Array<BarangPromise>
+        alasan : Text | null, 
+        nilai_total : number | null,
+        BarangPromise : Array<BarangPromise>,
+        PersediaanHeader : [],
 }
 
 export type BarangDetailRequest = {
@@ -275,6 +293,26 @@ const kasubagParaf = async (
         }
 }
 
+const pembelianUpload = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {    
+        try {
+            const request : any = req.body
+
+            const [persediaan, err] : [BarangDetailResponse, IErrorResponse] 
+            = await trxBarangPersediaanService.pembelianUpload(request);
+            
+            if(err) {
+                throw new CustomError(err.code, err.message)
+            }
+
+            responseSuccess(res, 201, persediaan)
+        } catch (error) {
+            next(error)
+        }
+}
+
 
 
 export default {
@@ -288,4 +326,5 @@ export default {
     kirimKasubag,
     tolakKasubag,
     kasubagParaf,
+    pembelianUpload
 }

@@ -4,13 +4,13 @@ import TrxBastPersediaan from "./trxbast-model";
 
 
 export interface ITrxBarangPersediaanHeaderAttributes {
-    kode_barang : string,
-	nomor_dokumen : string,
-	nama_barang : string,
-	jumlah : number,
-	harga_satuan : number,
-	total : number,
-	status : number,
+    kode_barang : string | null,
+	nomor_dokumen : string | null,
+	nama_barang : string | null,
+	jumlah : number | null,
+	harga_satuan : number | null,
+	total : number | null,
+	status : number | null,
 	ucr : string | null,
 	uch : string | null,
 	udcr : Date | undefined,
@@ -18,15 +18,24 @@ export interface ITrxBarangPersediaanHeaderAttributes {
 }
 
 class TrxBarangPersediaanHeader
-extends Model<ITrxBarangPersediaanHeaderAttributes, Optional<ITrxBarangPersediaanHeaderAttributes, "udch" | "udcr">>
+extends Model<ITrxBarangPersediaanHeaderAttributes, Optional<ITrxBarangPersediaanHeaderAttributes, 
+    "kode_barang" |
+    "nomor_dokumen" |
+    "nama_barang" |
+    "jumlah" |
+    "harga_satuan" |
+    "total" |
+    "status" |
+    "udch" | 
+    "udcr">>
 implements ITrxBarangPersediaanHeaderAttributes {
-    declare kode_barang : string;
-	declare nomor_dokumen : string;
-	declare nama_barang : string;
-	declare jumlah : number;
-	declare harga_satuan : number;
-	declare total : number;
-	declare status : number;
+    declare kode_barang : string | null;
+	declare nomor_dokumen : string | null;
+	declare nama_barang : string | null;
+	declare jumlah : number | null;
+	declare harga_satuan : number | null;
+	declare total : number | null;
+	declare status : number | null;
 	declare ucr : string | null;
 	declare uch : string | null;
 	declare udcr : Date | undefined;

@@ -10,6 +10,8 @@ routes.get("/form", trxbarangpersediaanController.getForm);
 
 routes.post("/post-barang-promise", trxbarangpersediaanController.storeDataPromise)
 
+routes.post("/post-barang-upload", trxbarangpersediaanController.pembelianUpload)
+
 //gudang
 routes.post("/post-barang-detail", trxbarangpersediaanController.detailBarang)
 
