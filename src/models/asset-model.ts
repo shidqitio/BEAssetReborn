@@ -4,12 +4,11 @@ import RefBidang from "./bidang-model";
 import RefKartu from "./kartu-model";
 
 export interface IAssetAttributes {
-    kode_bidang : string,
-	kode_kartu : string,
+    kode_asset_6 : string | null,
 	kode_asset : string,
-	nama_asset : string,
-	ucr : string,
-	uch : string,
+	nama_asset : string | null,
+	ucr : string | null,
+	uch : string | null,
 	udcr? : Date | undefined,
 	udch? : Date | undefined,
 }
@@ -17,25 +16,20 @@ export interface IAssetAttributes {
 class RefAsset
 extends Model<IAssetAttributes,Optional<IAssetAttributes,"udch" | "udcr">>
 implements IAssetAttributes {
-    declare kode_bidang : string;
-	declare kode_kartu : string;
+    declare kode_asset_6 : string | null;
 	declare kode_asset : string;
-	declare nama_asset : string;
-	declare ucr : string;
-	declare uch : string;
+	declare nama_asset : string | null;
+	declare ucr : string | null;
+	declare uch : string | null;
 	declare udcr? : Date | undefined;
 	declare udch? : Date | undefined;
 }
 
 RefAsset.init(
     {
-        kode_bidang : {
+        kode_asset_6 : {
             type : DataTypes.STRING(),
-            allowNull : false
-        },
-        kode_kartu : {
-            type : DataTypes.STRING(),
-            allowNull : false
+            allowNull : true
         },
         kode_asset : {
             type : DataTypes.STRING(),
@@ -74,24 +68,5 @@ RefAsset.init(
 )
 
 
-RefAsset.belongsTo(RefBidang, {
-    foreignKey : "kode_bidang",
-    as : "refbidang"
-})
-
-RefBidang.hasMany(RefAsset, {
-    foreignKey : "kode_bidang",
-    as : "refasset"
-})
-
-RefAsset.belongsTo(RefKartu, {
-    foreignKey : "kode_kartu",
-    as : "refkartu"
-})
-
-RefKartu.hasMany(RefAsset, {
-    foreignKey : "kode_kartu",
-    as : "refasset"
-})
 
 export default RefAsset

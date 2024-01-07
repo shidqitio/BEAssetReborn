@@ -8,6 +8,8 @@ routes.get("/unit/:id",ruangController.getRuangByUnit)
 
 routes.get("/asset-ruang/:id", ruangController.assetByRuang)
 
+routes.get("/unit/total-asset/:id", ruangController.totalAssetUnit)
+
 routes.post("/",ruangController.storeRuang)
 
 routes.put("/update-ruang/:id", ruangController.updateRuang)

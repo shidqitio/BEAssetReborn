@@ -12,9 +12,9 @@ routes.put("/ditemukan/:nup", trxinventarisasiController.BarangDitemukan)
 routes.put("/tidak-ditemukan/:nup", trxinventarisasiController.BarangTidakDitemukan)
 routes.put("/batal-ditemukan/:nup", trxinventarisasiController.BatalDitemukan)
 
-routes.post("/post-barang-inventarisasi", 
-uploadImage.single("file"),
-trxinventarisasiController.TambahInventarisasi)
+// routes.post("/post-barang-inventarisasi", 
+// uploadImage.single("file"),
+// trxinventarisasiController.TambahInventarisasi)
 
 
 export default routes

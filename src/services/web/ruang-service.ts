@@ -1,8 +1,12 @@
 import RefRuang from "../../models/ruang-model";
 import DaftarBarang from "../../models/daftarbarang-model";
-import { Op } from "sequelize";
+import { Op, QueryTypes } from "sequelize";
 import db from "../../config/database";
 import { RuangRequest } from "../../controllers/web/ruang-controller";
+import moment from "moment"
+import TrxPenyusutan from "../../models/trx_penyusutan-model";
+import sequelize from "sequelize";
+import CustomError from "../../middlewares/error-handler";
 
 const getRuangAll =async (
     page : number,
@@ -30,6 +34,7 @@ const getRuangAll =async (
 const getRuangByUnit =async (
     kode:string) : Promise<[any | null, any | null]> => {
     try {
+        let currentYear = moment().year()
         const ruang : RefRuang[] = await RefRuang.findAll({
             attributes : {exclude : ['udcr','udch']},
             where : {
@@ -39,11 +44,34 @@ const getRuangByUnit =async (
                 {
                     model : DaftarBarang,
                     as : "daftarbarang", 
-                    attributes : {exclude : ["udcr", "udch"]}
+                    attributes : {exclude : ["udcr", "udch"]},
+                    where : [
+                        {
+                            nup : {
+                                [Op.not] : null
+                            }
+                        }
+                    ],
+                    include : [
+                        {
+                            model : TrxPenyusutan,
+                            as : "trxpenyusutan", 
+                            where : {
+                                tanggal_penyusutan : {
+                                    [Op.between] : [`${currentYear}-01-01`,`${currentYear}-12-31`]
+                                }
+                            },
+                            on :{
+                                nup : sequelize.where(sequelize.col(`daftarbarang.nup`),`=`, sequelize.col('daftarbarang.trxpenyusutan.nup'))
+                            },
+                            attributes : {exclude : ["udcr", "udch"]},
+                        }
+                    ]
                 }
             ]
         })
 
+       
         if(ruang.length === 0) {
             return [null, {code : 409, message : "Data Tidak Ada"}]
         }
@@ -139,6 +167,7 @@ const deleteRuang =async (
 const assetByRuang =async (
     kode:string) : Promise<[any | null, any | null]> => {
         try {
+            let currentYear = moment().year()
             const ruang : RefRuang[] = await RefRuang.findAll({
                 attributes : {exclude : ['udcr','udch']},
                 where : {
@@ -148,7 +177,29 @@ const assetByRuang =async (
                     {
                         model : DaftarBarang,
                         as : "daftarbarang", 
-                        attributes : {exclude : ["udcr", "udch"]}
+                        where : [
+                            {
+                                nup : {
+                                    [Op.not] : null
+                                }
+                            }
+                        ],
+                        attributes : {exclude : ["udcr", "udch"]},
+                        include : [
+                            {
+                                model : TrxPenyusutan,
+                                as : "trxpenyusutan", 
+                                where : {
+                                    tanggal_penyusutan : {
+                                        [Op.between] : [`${currentYear}-01-01`,`${currentYear}-12-31`]
+                                    }
+                                },
+                                on :{
+                                    nup : sequelize.where(sequelize.col(`daftarbarang.nup`),`=`, sequelize.col('daftarbarang.trxpenyusutan.nup'))
+                                },
+                                attributes : {exclude : ["udcr", "udch"]},
+                            }
+                        ]
                     }
                 ]
             })
@@ -163,6 +214,31 @@ const assetByRuang =async (
         }
 }
 
+const totalAssetUnit =async (
+    kode:string) : Promise<[any | null, any | null]> => {
+    try {
+        const SumAsset : DaftarBarang[] = 
+        await db.query(`SELECT COALESCE(SUM(nilai_item), 0) as total_asset
+        FROM ref_daftar_barang a JOIN ref_ruang b 
+        ON a.kode_ruang = b.kode_ruang 
+        WHERE b.kode_unit = :kode AND a.nup IS NOT NULL`,
+        {
+            replacements : {kode : kode},
+            type : QueryTypes.SELECT
+        }
+        )
+
+        if(SumAsset.length === 0 ){
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+        
+
+        return [SumAsset[0], null]
+        
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
 
 
 export default {
@@ -172,5 +248,6 @@ export default {
     updateRuang,
     deleteRuang,
     assetByRuang,
+    totalAssetUnit
 }
 

@@ -10,6 +10,8 @@ routes.get("/form", trxbarangpersediaanController.getForm);
 
 routes.post("/post-barang-promise", trxbarangpersediaanController.storeDataPromise)
 
+routes.post("/post-barang-upload", trxbarangpersediaanController.pembelianUpload)
+
 //gudang
 routes.post("/post-barang-detail", trxbarangpersediaanController.detailBarang)
 
@@ -24,5 +26,10 @@ routes.put("/kirim-kasubag", trxbarangpersediaanController.kirimKasubag)
 routes.put("/tolak-kasubag", trxbarangpersediaanController.tolakKasubag)
 
 routes.put("/paraf-kasubag", trxbarangpersediaanController.kasubagParaf)
+
+//VIEW EXCEL
+routes.get("/view-excel/:kode_unit", trxbarangpersediaanController.BastBarangPersediaanExist)
+
+routes.get("/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanController.DetailBarangExist)
 
 export default routes

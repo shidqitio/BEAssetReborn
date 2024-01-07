@@ -60,7 +60,7 @@ const viewInventarisasiBarang =async (
             throw new CustomError(err.code, err.message)
         }
 
-        responseSuccess( res,200, inventarisasi)
+        responseSuccess(res,200, inventarisasi)
     } catch (error) {
         next(error)
     }
@@ -147,21 +147,25 @@ const BatalDitemukan =async (
     }
 }
 
-const TambahInventarisasi =async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const request : TrxInventarisasiRequest = req.body
+// const TambahInventarisasi =async (
+//     req:Request,
+//     res:Response,
+//     next:NextFunction) : Promise<void> => {
+//     try {
+//         const request : TrxInventarisasiRequest = req.body
 
-        const [inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] = 
-        await trxinventarisasiService.TambahInventarisasi(request, req.file)
+//         const [inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] = 
+//         await trxinventarisasiService.TambahInventarisasi(request, req.file)
+//         console.log("TES DATA = ", req.file)
+//         if(err) {
+//             throw new CustomError(err.code, err.message)
+//         }
 
-        responseSuccess(res, 202, inventarisasi)
-    } catch (error : any) {
-        next(error)
-    }
-}
+//         responseSuccess(res, 202, inventarisasi)
+//     } catch (error : any) {
+//         next(error)
+//     }
+// }
 
 export default {
     viewInventarisasiBarang, 
@@ -169,5 +173,5 @@ export default {
     BarangTidakDitemukan,
     detailBarangInventarisasi,
     BatalDitemukan,
-    TambahInventarisasi
+    // TambahInventarisasi
 }

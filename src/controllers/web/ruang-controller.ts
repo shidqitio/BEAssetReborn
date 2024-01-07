@@ -168,11 +168,32 @@ const deleteRuang =async (
     }
 }
 
+const totalAssetUnit =async (
+    req : Request,
+    res : Response,
+    next : NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.id
+
+        const [totalAsset, err] : [any, IErrorResponse] = await ruangService.totalAssetUnit(kode)
+
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200,totalAsset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 export default {
     storeRuang,
     getRuangByUnit, 
     assetByRuang,
     getRuangAll,
     updateRuang,
-    deleteRuang
+    deleteRuang, 
+    totalAssetUnit
 }
