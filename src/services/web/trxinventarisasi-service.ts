@@ -8,6 +8,7 @@ import TrxPenyusutan from "../../models/trx_penyusutan-model";
 import sequelize from "sequelize";
 import { removeFile, removeFileName } from "../../utils/remove-file";
 import dotenv from "dotenv"
+import CustomError from "../../middlewares/error-handler";
 dotenv.config()
 
 
@@ -96,14 +97,18 @@ const BarangTidakDitemukan =async (
 }
 
 const viewInventarisasiBarang =async (
+    jenis_usulan : string
     ) : Promise<[any | null, any | null]> => {
     try {
         const Inventarisasi : TrxInventarisasi[] = 
         await db.query(`SELECT a.nup, c.kode_unit, c.nama_ruang, 
         b.kode_asset, d.nama_asset,b.merk, b.nilai_item as nilai_perolehan, b.tanggal_perolehan
-        FROM trx_inventarisasi a JOIN ref_daftar_barang b ON a.nup = b.nup 
+        FROM trx_inventarisasi a LEFT JOIN ref_daftar_barang b ON a.nup = b.nup 
         JOIN ref_ruang c ON a.kode_ruang = c.kode_ruang  JOIN ref_asset d ON a.kode_asset = d.kode_asset
-        `, {type : QueryTypes.SELECT})
+        where jenis_usulan = :jenis_usulan
+        `, {
+            replacements : {jenis_usulan : jenis_usulan},
+            type : QueryTypes.SELECT})
 
         if(Inventarisasi.length === 0) {
             return [null, {code : 499, message : "Tidak Ada Barang Inventarisasi"}]
@@ -159,6 +164,7 @@ const detailBarangInventarisasi =async (
 
 const BatalDitemukan =async (
     nup:string) :  Promise<[any | null, any | null]> => {
+    const t = await db.transaction()
     try {
         const exDaftarBarang : DaftarBarang | null = await DaftarBarang.findOne({
             where : {
@@ -172,10 +178,25 @@ const BatalDitemukan =async (
 
         exDaftarBarang.status_barang = 0
 
-        await exDaftarBarang.save()
+        await exDaftarBarang.save({transaction :t})
 
+        const destroy_data = await TrxInventarisasi.destroy({
+            where : {
+                nup : nup
+            },
+            transaction : t
+        })
+
+        if(!destroy_data){
+            return [null, {code : 499, message : "Data Berhasil Dihapus"}]
+        }
+        
+
+        await t.commit()
+        
         return[exDaftarBarang, null]
     } catch (error : any) {
+        await t.rollback()
         return [null, {code : 500, message : error.message}]
     }
 }
@@ -183,14 +204,20 @@ const BatalDitemukan =async (
 const TambahInventarisasi =
 async (request:TrxInventarisasiRequest, file : any) :  Promise<[any | null, any | null]>  => {
     try {
-        const PUBLIC_FILE_BARANG = `${process.env.HOST_ASSET}/${file.filename}`
+        let PUBLIC_FILE_BARANG
+        if(file && file.filename){
+            PUBLIC_FILE_BARANG = `${process.env.HOST_ASSET}/${file.filename}`
+        } 
+        else {
+            throw new CustomError(409,"Foto Tidak Ada")
+        }
 
         console.log("TES ", PUBLIC_FILE_BARANG)
         const kondisiEnum: Kondisi = Kondisi[request.kondisi as keyof typeof Kondisi];
         
         const newDataInventarisasi : TrxInventarisasi = await TrxInventarisasi.create({
             kode_asset : request.kode_asset,
-            jenis_usulan :  JenisUsulan.identifikasi,
+            jenis_usulan :  JenisUsulan.catatan,
             status : 0,
             kode_ruang : request.kode_ruang,
             tahun_perolehan : request.tahun_perolehan,
@@ -201,15 +228,25 @@ async (request:TrxInventarisasiRequest, file : any) :  Promise<[any | null, any 
         })
 
         if(!newDataInventarisasi) {
-            return [null, {code : 409, message : "Data Gagal Insert"}]
+            throw new CustomError(409, "Data Gagal Dibuat")
         }
 
         return [newDataInventarisasi, null]
 
     } catch (error : any) {
-        return [null, {code : 500, message : error.message}]
+        if(error instanceof CustomError){
+            if(file && file.path){
+                await removeFile(file.path)
+            }
+            throw new CustomError(error.code, error.message)
+        }
+        else{
+            throw new CustomError(500,error.message)
+        }
     }
+
 }
+
 
 export default {
     BarangDitemukan, 

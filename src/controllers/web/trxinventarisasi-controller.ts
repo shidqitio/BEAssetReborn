@@ -50,9 +50,11 @@ const viewInventarisasiBarang =async (
     res : Response, 
     next : NextFunction
 ) : Promise<void> => {
-    try {
+    try {   
+        const jenis_usulan = req.params.id
+
         const [inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] 
-        = await trxinventarisasiService.viewInventarisasiBarang()
+        = await trxinventarisasiService.viewInventarisasiBarang(jenis_usulan)
 
         if(err) {
             throw new CustomError(err.code, err.message)
@@ -154,10 +156,6 @@ const TambahInventarisasi =async (
 
         const [inventarisasi, err] : [TrxInventarisasiResponse, IErrorResponse] = 
         await trxinventarisasiService.TambahInventarisasi(request, req.file)
-        console.log("TES DATA = ", req.file)
-        if(err) {
-            throw new CustomError(err.code, err.message)
-        }
 
         responseSuccess(res, 202, inventarisasi)
     } catch (error : any) {

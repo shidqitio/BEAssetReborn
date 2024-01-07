@@ -1,4 +1,52 @@
-[2023-12-08T02:48:31.315] [ERROR] error - Error: Type harus di isi.
+[2023-12-13T00:28:56.973] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2023-12-13T00:29:41.303] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2023-12-13T00:30:22.666] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-13T00:30:52.780] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-13T00:31:00.351] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-13T00:32:14.055] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2023-12-13T00:32:19.905] [ERROR] error - Error: Type harus di isi.
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
     at Generator.next (<anonymous>)
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
@@ -11,7 +59,7 @@
     at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
   storageErrors: []
 }
-[2023-12-08T02:48:58.710] [ERROR] error - Error: Type harus di isi.
+[2023-12-13T00:32:50.404] [ERROR] error - Error: Type harus di isi.
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
     at Generator.next (<anonymous>)
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
@@ -24,7 +72,7 @@
     at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
   storageErrors: []
 }
-[2023-12-08T02:49:07.018] [ERROR] error - Error: Type harus di isi.
+[2023-12-13T00:32:52.076] [ERROR] error - Error: Type harus di isi.
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
     at Generator.next (<anonymous>)
     at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
@@ -37,217 +85,63 @@
     at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
   storageErrors: []
 }
-[2023-12-08T02:50:36.643] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T00:33:30.908] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
 }
-[2023-12-08T02:50:49.387] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T00:33:45.615] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
 }
-[2023-12-08T02:51:44.490] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T00:33:46.264] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
 }
-[2023-12-08T02:52:10.366] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T00:34:20.033] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
 }
-[2023-12-08T02:53:26.087] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T01:00:53.606] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:238:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:31:71
     at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:54:02.572] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:27:12)
+    at Object.TambahInventarisasi (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:205:93)
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:158:39
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:8:71
+    at new Promise (<anonymous>) {
+  code: 500,
+  status: 'error'
 }
-[2023-12-08T02:54:36.759] [ERROR] error - MulterError: Unexpected field
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:513:28)
-    at Multipart.emit (node:domain:489:12)
-    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
-  code: 'LIMIT_UNEXPECTED_FILE',
-  field: 'filename',
-  storageErrors: []
-}
-[2023-12-08T02:54:43.580] [ERROR] error - MulterError: Unexpected field
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:513:28)
-    at Multipart.emit (node:domain:489:12)
-    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
-  code: 'LIMIT_UNEXPECTED_FILE',
-  field: 'filename',
-  storageErrors: []
-}
-[2023-12-08T02:54:49.567] [ERROR] error - MulterError: Unexpected field
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:513:28)
-    at Multipart.emit (node:domain:489:12)
-    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:200:10)
-    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
-  code: 'LIMIT_UNEXPECTED_FILE',
-  field: 'fil',
-  storageErrors: []
-}
-[2023-12-08T02:55:07.877] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
+[2023-12-13T01:04:48.704] [ERROR] error - CustomError: Foto Tidak Ada
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:241:19
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:31:71
     at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:55:35.145] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:25:23
+    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:27:12)
+    at Object.TambahInventarisasi (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:205:93)
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:158:39
     at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:56:37.238] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:25:23
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:56:59.614] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:25:23
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:57:15.501] [ERROR] error - Error: Type file harus salah satu dari barang
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:30:9
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:58:20.817] [ERROR] error - Error: Type file harus salah satu dari barang
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:30:9
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
-}
-[2023-12-08T02:58:44.187] [ERROR] error - Error: Type file harus salah satu dari barang
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:30:9
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:68:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
-  storageErrors: []
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:8:71
+    at new Promise (<anonymous>) {
+  code: 409,
+  status: 'error'
 }
