@@ -248,6 +248,8 @@ async (request:TrxInventarisasiRequest, file : any) :  Promise<[any | null, any 
 }
 
 
+
+
 export default {
     BarangDitemukan, 
     BarangTidakDitemukan,
