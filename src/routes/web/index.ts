@@ -10,6 +10,7 @@ import trxinventarisasiRoutes from "./trxinventarisasi-route"
 //PERSEDIAAN
 import assetpersediaanRoutes from "./assetpersediaan-route"
 import trxbarangpersediaanRoutes from "./trxbarangpersediaan-route"
+import trxrequestpemakaianRoutes from "./trxrequestpemakaian-route"
 
 
 // REKLASIFIKASI
@@ -29,6 +30,8 @@ routes.use("/asset-persediaan", assetpersediaanRoutes)
 routes.use("/form-persediaan",trxbarangpersediaanRoutes)
 
 routes.use("/inventarisasi", trxinventarisasiRoutes)
+
+routes.use("/request-pemakaian", trxrequestpemakaianRoutes)
 
 // REKLASIFIKASI
 routes.use("/reklasifikasi", reklasifikasiRoutes)

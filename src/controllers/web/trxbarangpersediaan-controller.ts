@@ -313,7 +313,45 @@ const pembelianUpload = async (
         }
 }
 
+const BastBarangPersediaanExist =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const kode_unit : string = req.params.kode_unit;
 
+        const [BastBarang,err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.BastBarangPersediaanExist(kode_unit)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, BastBarang)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const DetailBarangExist =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const kode_barang : string =  req.params.kode_barang
+        const kode_unit : string = req.params.kode_unit
+        const nomor_dokumen : any = req.query.nomor_dokumen
+
+        const [BarangDetail, err] : [BarangDetailResponse, IErrorResponse] = await trxBarangPersediaanService.DetailBarangExist(kode_barang,kode_unit,nomor_dokumen)
+
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200, BarangDetail)
+    } catch (error) {
+        next(error)
+    }
+}
 
 export default {
     getForm,
@@ -326,5 +364,7 @@ export default {
     kirimKasubag,
     tolakKasubag,
     kasubagParaf,
-    pembelianUpload
+    pembelianUpload,
+    BastBarangPersediaanExist,
+    DetailBarangExist
 }

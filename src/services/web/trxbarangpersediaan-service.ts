@@ -3,10 +3,12 @@ import TrxBarangPersediaanDetail from "../../models/trxpersediaandetail-model";
 import TrxBastPersediaan from "../../models/trxbast-model";
 import { BarangPromiseRequest, BarangDetailRequest, BarangPromise, BarangExcelRequest } from "../../controllers/web/trxbarangpersediaan-controller";
 import { Op } from "sequelize";
+import Sequelize from "sequelize";
 import sequelize from "sequelize";
 import db from "../../config/database";
 import generatenumber from "../../utils/generatenumber";
 import { status_pemakaian, pakai_unit } from "../../models/trxpersediaandetail-model";
+import CustomError from "../../middlewares/error-handler";
 
 
 
@@ -555,6 +557,18 @@ const pembelianUpload = async (
     try {
         let array_awal : any = request.barang_bast
         for(let x : number = 0 ; x < array_awal.length ; x++){
+            let exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findOne({
+                where : {
+                    nomor_dokumen : array_awal[x].nomor_dokumen,
+                    kode_unit : array_awal[x].kode_unit
+                },
+                transaction : t
+            })
+
+            if(exBast){
+                throw new CustomError(499, "Nomor Dokumen Sudah Terpakai")
+            }
+            
             let create_bast = await TrxBastPersediaan.create({
                 nomor_dokumen : array_awal[x].nomor_dokumen,
                 kode_persediaan : 3,
@@ -565,7 +579,7 @@ const pembelianUpload = async (
             }, {transaction : t})
 
             if (!create_bast) {
-            return [null, {code : 499, message : "Data gagal insert"}]
+                throw new CustomError(499, "Gagal Melakukan Insert Data")
             }
 
             let array_kedua = array_awal[x].PersediaanHeader.length
@@ -573,18 +587,19 @@ const pembelianUpload = async (
             
 
             for (let y : number = 0 ; y < array_kedua ; y++) {
+                let harga_satuan_header = array_isi[y].harga_satuan * array_isi[y].jumlah
                 let createBarangHeader = await TrxBarangPersediaanHeader.create({
                     nomor_dokumen : array_awal[x].nomor_dokumen,
                     kode_barang : array_isi[y].kode_barang,
                     nama_barang : array_isi[y].nama_barang,
                     jumlah : array_isi[y].jumlah,
                     harga_satuan : array_isi[y].harga_satuan,
-                    total : array_isi[y].total,
+                    total : harga_satuan_header,
                     status :1
                 }, {transaction :t})
               
-                if(!createBarangHeader) {
-                    return [null, {code : 499, message : "Data gagal insert"}]
+                if (!create_bast) {
+                    throw new CustomError(499, "Gagal Melakukan Insert Data")
                 }
 
 
@@ -620,15 +635,16 @@ const pembelianUpload = async (
                             kode_urut : hasil,
                             kode_unit : array_awal[x].kode_unit,
                             nama_barang : array_isi_2[z].nama_barang,
-                            harga_satuan : array_isi[y].harga_satuan,
+                            harga_satuan : array_isi[z].harga_satuan,
                             keterangan : array_isi_2[z].keterangan,
                             satuan : array_isi_2[z].satuan,
                             tahun : array_isi_2[z].tahun,
-                            pakai_unit : pakai_unit.option1
+                                pakai_unit : pakai_unit.option2,
+                                status_pemakaian : status_pemakaian.option1
                         }, {transaction : t})
 
                         if(!insert_barang) {
-                            return [null, {code : 499, message : "Data gagal insert"}]
+                            throw new CustomError(499, "Data Insert Gagal")
                         }
                     }
                 }
@@ -649,6 +665,73 @@ const pembelianUpload = async (
     }
 };
 
+const BastBarangPersediaanExist =async (
+    kode_unit:string) : Promise<[any | null , any | null]> => {
+    try {
+        const ExBarangPersediaan : TrxBastPersediaan[] = await TrxBastPersediaan.findAll({
+            where : {
+                kode_unit : kode_unit
+            },
+            attributes : [
+                'tanggal_dokumen',
+                'tanggal_pembukuan',
+                'nomor_dokumen',
+            ],
+            include : [
+                {
+                    model : TrxBarangPersediaanHeader, 
+                    as : 'TrxBarangPersediaanHeader',
+                    attributes : [
+                        "kode_barang",
+                        "nama_barang",
+                        "harga_satuan",
+                        "total"
+                    ]
+                }
+            ]
+        }) 
+
+        if(ExBarangPersediaan.length === 0) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        return [ExBarangPersediaan, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const DetailBarangExist =async (
+    kode_barang:string, kode_unit : string, nomor_dokumen: string) : Promise<[any | null , any | null]>=> {
+    try {
+        const exDetailBarang : TrxBarangPersediaanDetail[] = await TrxBarangPersediaanDetail.findAll({
+            where : {
+                kode_barang : kode_barang,
+                kode_unit : kode_unit, 
+                nomor_dokumen : nomor_dokumen,
+                status_pemakaian : status_pemakaian.option1,
+                pakai_unit : pakai_unit.option2
+            },
+            attributes : [
+                [Sequelize.fn('COUNT', Sequelize.col('kode_urut')), 'kuantitas'],
+                "kode_barang_persediaan",
+                "nama_barang",
+                "harga_satuan"
+            ],
+            group : "kode_barang_persediaan"
+        })
+
+        if (!exDetailBarang) {
+            return [null, {code : 499, message : "Data Detail Barang Tidak Ada"}]
+        }
+        return [exDetailBarang, null]
+    } catch (error : any) {
+        return[null, {code : 500, message : error.message}]
+    }
+}
+
+
+
 export default {
     getBarangPromise,
     getBarangPromiseProses,
@@ -660,5 +743,7 @@ export default {
     kirimKasubag,
     kasubagParaf,
     tolakKasubag,
-    pembelianUpload
+    pembelianUpload,
+    BastBarangPersediaanExist,
+    DetailBarangExist
 }

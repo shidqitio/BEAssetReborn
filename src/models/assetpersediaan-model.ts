@@ -1,9 +1,9 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import db from "../config/database";
-import AssetPersediaan10 from "./assetpersediaan10-model";
+import RefAssetBaru6 from "./refassetbaru6-model";
 
 export interface IAssetPersediaanAttributes {
-    kode_asset : string,
+    kode_asset_6 : string,
 	kode_barang_persediaan : string,
 	nama_persediaan : string,
 	satuan : string,
@@ -16,7 +16,7 @@ export interface IAssetPersediaanAttributes {
 class AssetPersediaan 
 extends Model<IAssetPersediaanAttributes, Optional<IAssetPersediaanAttributes, "udch" | "udcr">>
 implements IAssetPersediaanAttributes {
-    declare kode_asset : string ;
+    declare kode_asset_6 : string ;
 	declare kode_barang_persediaan : string ;
 	declare nama_persediaan : string ;
 	declare satuan : string ;
@@ -29,7 +29,7 @@ implements IAssetPersediaanAttributes {
 
 AssetPersediaan.init(
     {
-        kode_asset : {
+        kode_asset_6 : {
             type : DataTypes.STRING(),
             allowNull : false
         },
@@ -73,13 +73,13 @@ AssetPersediaan.init(
     }
 )
 
-AssetPersediaan.belongsTo(AssetPersediaan10, {
-    foreignKey : "kode_asset",
-    as : "AssetPersediaan10"
+AssetPersediaan.belongsTo(RefAssetBaru6, {
+    foreignKey : "kode_asset_6",
+    as : "refasset6"
 })
 
-AssetPersediaan10.hasMany(AssetPersediaan, {
-    foreignKey : "kode_asset",
+RefAssetBaru6.hasMany(AssetPersediaan, {
+    foreignKey : "kode_asset_6",
     as : "AssetPersediaan"
 })
 

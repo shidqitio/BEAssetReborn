@@ -40,7 +40,7 @@ export interface ITrxBarangPersediaanDetailAttributes {
 }
 
 class TrxBarangPersediaanDetail
-extends Model<ITrxBarangPersediaanDetailAttributes, Optional<ITrxBarangPersediaanDetailAttributes, "udcr"|"udch">>
+extends Model<ITrxBarangPersediaanDetailAttributes, Optional<ITrxBarangPersediaanDetailAttributes, "kode_urut"| "udcr"|"udch">>
 implements ITrxBarangPersediaanDetailAttributes {
 	declare nomor_dokumen : string;
 	declare id_permintaan : string | null;

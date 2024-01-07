@@ -1,93 +1,21 @@
-[2023-12-26T23:08:27.842] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
+[2024-01-05T16:24:16.144] [ERROR] error - CustomError: WHERE parameter "kode_unit" has invalid "undefined" value
+    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:326:19
     at Generator.next (<anonymous>)
     at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:96:5) {
   code: 500,
   status: 'error'
 }
-[2023-12-26T23:09:54.501] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
+[2024-01-05T16:59:04.237] [ERROR] error - CustomError: WHERE parameter "nomor_dokumen" has invalid "undefined" value
+    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:347:19
     at Generator.next (<anonymous>)
     at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:96:5) {
   code: 500,
   status: 'error'
 }
-[2023-12-26T23:11:33.627] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:12:07.197] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:26:14.768] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:27:13.452] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:28:00.477] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:28:14.205] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:28:38.502] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:29:07.524] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:29:29.052] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-26T23:30:08.815] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'PersediaanDetail')
-    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:307:23
+[2024-01-05T16:59:29.352] [ERROR] error - CustomError: WHERE parameter "nomor_dokumen" has invalid "undefined" value
+    at C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:347:19
     at Generator.next (<anonymous>)
     at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:96:5) {

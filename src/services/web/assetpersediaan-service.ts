@@ -1,6 +1,6 @@
 import AssetPersediaan from "../../models/assetpersediaan-model";
-import AssetPersediaan10 from "../../models/assetpersediaan10-model";
 import { AssetPersediaanRequest } from "../../controllers/web/assetpersediaan-controller";
+import RefAssetBaru6 from "../../models/refassetbaru6-model";
 
 
 const getAll =async () : Promise<[any | null, any | null]> => {
@@ -9,8 +9,8 @@ const getAll =async () : Promise<[any | null, any | null]> => {
             attributes : {exclude : ['udcr', 'udch', 'ucr', 'uch']},
             include : [
                 {
-                    model : AssetPersediaan10, 
-                    as : "AssetPersediaan10",
+                    model : RefAssetBaru6, 
+                    as : "refasset6",
                     attributes : {exclude : ['udcr', 'udch', 'ucr', 'uch']},
                 }
             ]
@@ -33,8 +33,8 @@ const getById =async (
              attributes : {exclude : ['udcr', 'udch', 'ucr', 'uch']},
             include : [
                 {
-                    model : AssetPersediaan10,
-                    as : "AssetPersediaan10",
+                    model : RefAssetBaru6, 
+                    as : "refasset6",
                      attributes : {exclude : ['udcr', 'udch', 'ucr', 'uch']},
                 }
             ]
@@ -63,7 +63,7 @@ const createAsset = async (request : AssetPersediaanRequest) : Promise<[any | nu
         }
 
         const newAsset : AssetPersediaan = await AssetPersediaan.create({
-            kode_asset : request.kode_asset,
+            kode_asset_6 : request.kode_asset,
             kode_barang_persediaan : request.kode_barang_persediaan,
             nama_persediaan : request.nama_persediaan,
             satuan : request.satuan,
@@ -90,7 +90,7 @@ const updateAsset =async (
         if(!asset) {
             return [null, {code : 409, message : "Data Tidak Ada"}]
         }
-        asset.kode_asset      = request.kode_asset;
+        asset.kode_asset_6      = request.kode_asset;
         asset.nama_persediaan = request.nama_persediaan;
         asset.satuan          = request.satuan;
         asset.uch            = request.uch;
@@ -123,7 +123,7 @@ const hapusAssetPersediaan =async (
 
         const hapusData  = await AssetPersediaan.destroy({
             where : {
-                kode_asset : kode
+                kode_asset_6 : kode
             }
         })
 

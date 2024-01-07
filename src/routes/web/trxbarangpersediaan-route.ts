@@ -27,4 +27,9 @@ routes.put("/tolak-kasubag", trxbarangpersediaanController.tolakKasubag)
 
 routes.put("/paraf-kasubag", trxbarangpersediaanController.kasubagParaf)
 
+//VIEW EXCEL
+routes.get("/view-excel/:kode_unit", trxbarangpersediaanController.BastBarangPersediaanExist)
+
+routes.get("/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanController.DetailBarangExist)
+
 export default routes
