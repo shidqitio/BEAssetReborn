@@ -353,6 +353,25 @@ const DetailBarangExist =async (
     }
 }
 
+const uploadFileBast =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const nomor_dokumen : any = req.query.nomor_dokumen
+
+        const [bast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.uploadFileBast(nomor_dokumen, req.file)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 202, bast)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     getForm,
     getBarangPromise,
@@ -366,5 +385,6 @@ export default {
     kasubagParaf,
     pembelianUpload,
     BastBarangPersediaanExist,
-    DetailBarangExist
+    DetailBarangExist,
+    uploadFileBast
 }

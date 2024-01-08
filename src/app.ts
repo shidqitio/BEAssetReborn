@@ -11,6 +11,7 @@ import logger, {errorLogger} from "./config/logger";
 import {notFound} from "./middlewares/not-found";
 import { errorhandler } from "./middlewares/error-handler";
 import webRoutes from "../src/routes/web/index"
+import path from "path";
 
 
 const app : Application = express()
@@ -27,6 +28,9 @@ app.use(compression());
 
 
 //=====================================================
+//IMAGES LINK
+app.use("/public/bast/", express.static(path.join(__dirname, "public/images/bast")))
+
 //ROUTES
 app.use("/web", webRoutes)
 

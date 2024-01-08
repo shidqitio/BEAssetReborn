@@ -1,137 +1,146 @@
-[2023-12-13T00:28:56.973] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
+[2024-01-08T08:55:01.870] [ERROR] error - SERVER ERROR ConnectionError [SequelizeConnectionError]: Unknown database 'db_asset_rebuild'
+    at ConnectionManager.connect (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\dialects\mysql\connection-manager.js:126:17)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\dialects\abstract\connection-manager.js:332:24)
+    at async D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\dialects\abstract\connection-manager.js:250:32
+    at async ConnectionManager.getConnection (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\dialects\abstract\connection-manager.js:280:7)
+    at async D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\sequelize.js:638:26
+    at async MySQLQueryInterface.tableExists (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\dialects\abstract\query-interface.js:242:17)
+    at async Function.sync (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\model.js:1349:21)
+    at async Sequelize.sync (D:\Dev SIPPP\RebuildAsset\node_modules\sequelize\src\sequelize.js:825:9) {
+  parent: Error: Unknown database 'db_asset_rebuild'
+      at Packet.asError (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at ClientHandshake.execute (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_BAD_DB_ERROR',
+    errno: 1049,
+    sqlState: '42000',
+    sqlMessage: "Unknown database 'db_asset_rebuild'",
+    sql: undefined
+  },
+  original: Error: Unknown database 'db_asset_rebuild'
+      at Packet.asError (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at ClientHandshake.execute (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_BAD_DB_ERROR',
+    errno: 1049,
+    sqlState: '42000',
+    sqlMessage: "Unknown database 'db_asset_rebuild'",
+    sql: undefined
+  }
+}
+[2024-01-08T08:55:34.877] [ERROR] error - CustomError: Data Tidak ada / Sudah habis terpakai
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-01-08T08:57:40.781] [ERROR] error - CustomError: Data Tidak ada / Sudah habis terpakai
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-01-08T09:00:01.171] [ERROR] error - CustomError: Data Tidak ada / Sudah habis terpakai
+    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 499,
   status: 'error'
 }
-[2023-12-13T00:29:41.303] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-13T00:30:22.666] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:30:52.780] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:31:00.351] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:32:14.055] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:161:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:32:19.905] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:32:50.404] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
-    at Generator.next (<anonymous>)
-    at fulfilled (C:\DEV SIPPP\assetrebuild\BEAssetReborn\src\controllers\web\trxbarangpersediaan-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  code: 500,
-  status: 'error'
-}
-[2023-12-13T00:32:52.076] [ERROR] error - Error: Type harus di isi.
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:24:23
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:8:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:4:12)
-    at DiskStorage.destination [as getDestination] (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:21:49)
-    at DiskStorage._handleFile (D:\Dev SIPPP\RebuildAsset\node_modules\multer\storage\disk.js:31:8)
-    at D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:137:17
-    at fileFilterImage (D:\Dev SIPPP\RebuildAsset\src\middlewares\upload.ts:67:5)
-    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:44:7) {
+[2024-01-08T11:48:56.221] [ERROR] error - MulterError: Unexpected field
+    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:513:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
+  code: 'LIMIT_UNEXPECTED_FILE',
+  field: 'file_path',
   storageErrors: []
 }
-[2023-12-13T00:33:30.908] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
+[2024-01-08T11:50:21.822] [ERROR] error - MulterError: Unexpected field
+    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:513:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
+  code: 'LIMIT_UNEXPECTED_FILE',
+  field: 'file_path',
+  storageErrors: []
 }
-[2023-12-13T00:33:45.615] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
+[2024-01-08T11:51:40.629] [ERROR] error - MulterError: Unexpected field
+    at wrappedFileFilter (D:\Dev SIPPP\RebuildAsset\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (D:\Dev SIPPP\RebuildAsset\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:513:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (D:\Dev SIPPP\RebuildAsset\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (D:\Dev SIPPP\RebuildAsset\node_modules\busboy\lib\types\multipart.js:567:19) {
+  code: 'LIMIT_UNEXPECTED_FILE',
+  field: 'file_path',
+  storageErrors: []
 }
-[2023-12-13T00:33:46.264] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-13T00:34:20.033] [ERROR] error - CustomError: Tidak Ada Barang Inventarisasi
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:60:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2023-12-13T01:00:53.606] [ERROR] error - CustomError: Cannot read properties of undefined (reading 'filename')
-    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:238:19
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:31:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:27:12)
-    at Object.TambahInventarisasi (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:205:93)
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:158:39
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:8:71
-    at new Promise (<anonymous>) {
+[2024-01-08T13:16:48.589] [ERROR] error - ERROR REMOVE FILE NAME: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\undefined'
+[2024-01-08T13:17:08.290] [ERROR] error - ERROR REMOVE FILE NAME: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\undefined'
+[2024-01-08T13:18:53.387] [ERROR] error - ERROR REMOVE FILE NAME: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\undefined'
+[2024-01-08T13:22:44.323] [ERROR] error - ERROR REMOVE FILE NAME: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\undefined'
+[2024-01-08T13:30:09.728] [ERROR] error - CustomError: Internal Server Error
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:780:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:6:65) {
   code: 500,
   status: 'error'
 }
-[2023-12-13T01:04:48.704] [ERROR] error - CustomError: Foto Tidak Ada
-    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:241:19
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:31:71
-    at new Promise (<anonymous>)
-    at __awaiter (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:27:12)
-    at Object.TambahInventarisasi (D:\Dev SIPPP\RebuildAsset\src\services\web\trxinventarisasi-service.ts:205:93)
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:158:39
-    at Generator.next (<anonymous>)
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxinventarisasi-controller.ts:8:71
-    at new Promise (<anonymous>) {
-  code: 409,
+[2024-01-08T13:30:49.426] [ERROR] error - CustomError: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\src\src\public\images\bast\bast-1704695449405.png'
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:780:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:6:65) {
+  code: 500,
+  status: 'error'
+}
+[2024-01-08T13:31:09.993] [ERROR] error - CustomError: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\src\services\src\public\images\bast\bast-1704695469970.png'
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:780:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:6:65) {
+  code: 500,
+  status: 'error'
+}
+[2024-01-08T13:43:46.607] [ERROR] error - CustomError: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\RebuildAsset\bast-1704696187547.png'
+    at D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:785:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\RebuildAsset\src\services\web\trxbarangpersediaan-service.ts:6:65) {
+  code: 500,
   status: 'error'
 }

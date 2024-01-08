@@ -45,7 +45,8 @@ const excelPemakaian =async (
             }, {transaction : t})
 
             if(!create_trxRequestPemakaian){
-                throw new CustomError(499, "Data Tidak ada ")
+                await t.rollback()
+                return [null, {code : 499, message : "Data Tidak Ada"}]
             }
 
 
@@ -61,7 +62,8 @@ const excelPemakaian =async (
             })
 
             if(dataBarang.length === 0) {
-                throw new CustomError(499, "Data Tidak ada / Sudah habis terpakai")
+                await t.rollback()
+                return [null, {code : 499, message : "Data Tidak ada / Sudah habis terpakai"}]
             }
 
             let updateBarang : any = await db.query(`
@@ -88,7 +90,8 @@ const excelPemakaian =async (
                 })
 
             if(updateBarang[1] === 0) {
-                throw new CustomError (499, "Data gagal")
+                await t.rollback()
+                return [null, {code : 499, message : "Data Update Gagal"}]
             }
 
         }

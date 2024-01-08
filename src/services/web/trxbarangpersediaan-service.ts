@@ -9,6 +9,12 @@ import db from "../../config/database";
 import generatenumber from "../../utils/generatenumber";
 import { status_pemakaian, pakai_unit } from "../../models/trxpersediaandetail-model";
 import CustomError from "../../middlewares/error-handler";
+import dotenv from "dotenv"
+import { removeFile, removeFileName } from "../../utils/remove-file";
+dotenv.config()
+import fs from "fs/promises";
+import path from "path"
+
 
 
 
@@ -730,6 +736,58 @@ const DetailBarangExist =async (
     }
 }
 
+const uploadFileBast =async (
+    nomor_dokumen:string, file: any)  : Promise<[any | null , any | null]> => {
+    try {
+        const exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findByPk(nomor_dokumen)
+
+        if (!exBast) {
+            return [null, {code : 499, message : "Data BAST Tidak Ada"}]
+        }
+
+        const existFile: any = exBast.file_path
+
+        // console.log("TES DATA : ",existFile)
+
+        if(file && file.filename){
+            const PUBLIC_FILE_BAST = `${process.env.HOST_ASSET}${process.env.PUBLIC_FILE_BAST}/${file.filename}`;
+
+            exBast.file_path = PUBLIC_FILE_BAST
+        }
+
+        const response = await exBast.save()
+
+        // console.log("TES DATA : ", file.file_path)
+
+        if(!response){
+            throw new CustomError(499, "Gagal Update BAST")
+        }
+        let part
+        let lastPart
+        if(existFile){
+            part = existFile.split("/")
+            lastPart = part[part.length - 1] 
+            // console.log(lastPart)
+
+            if(file && file.path){
+                // console.log(file.path)
+                 await fs.unlink(path.join(__dirname,`../../../src/public/images/bast/${lastPart}`))
+            }
+        }
+
+        return [exBast, null]
+    } catch (error : any) {
+        if (error instanceof CustomError) {
+            if (file && file.path) {
+              await removeFile(file.path);
+            }
+        throw new CustomError(500, error.message)
+    }
+        else {
+            throw new CustomError(500, error.message)
+        }
+    }
+}
 
 
 export default {
@@ -745,5 +803,6 @@ export default {
     tolakKasubag,
     pembelianUpload,
     BastBarangPersediaanExist,
-    DetailBarangExist
+    DetailBarangExist,
+    uploadFileBast
 }

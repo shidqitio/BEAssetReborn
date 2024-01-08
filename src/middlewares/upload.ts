@@ -6,12 +6,13 @@ import { Request } from "express";
 // jenis file
 enum FileType {
   Barang = "barang",
-
+  Bast = "bast"
 }
 
 // path file
 const destinationMap: Record<FileType, string> = {
   [FileType.Barang]: "./src/public/images/barang",
+  [FileType.Bast] : "./src/public/images/bast"
 };
 
 const allowedMimeTypesImage = ["image/jpeg", "image/png", "image/jpg"];

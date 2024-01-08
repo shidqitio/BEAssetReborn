@@ -11,6 +11,7 @@ export interface ITrxBastPersediaanAttributes {
 	kode_unit : string,
 	status : number,
 	alasan : Text | null,
+    file_path : string | null,
 	ucr : string | null,
 	uch : string | null,
 	udcr : Date | undefined,
@@ -29,6 +30,7 @@ implements ITrxBastPersediaanAttributes {
 	declare kode_unit : string;
 	declare status : number;
 	declare alasan : Text | null;
+    declare file_path : string | null;
 	declare ucr : string | null;
 	declare uch : string | null;
 	declare udcr : Date | undefined;
@@ -73,6 +75,10 @@ TrxBastPersediaan.init(
         },
         alasan : {
             type : DataTypes.TEXT(),
+            allowNull : true
+        },
+        file_path : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
         ucr : {
