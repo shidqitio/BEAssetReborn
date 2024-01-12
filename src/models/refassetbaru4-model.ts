@@ -3,8 +3,8 @@ import db from "../config/database";
 
 export interface IRefAssetBaru4Attributes {
     kode_coa_4 : string | null,
-	kode_asset_3 : string | null,
-	kode_asset_4 : string | null,
+	kode_asset_3 : string,
+	kode_asset_4 : string,
 	uraian_kelompok : string | null,
 	udcr : Date | null,
 	udch : Date | null,
@@ -14,8 +14,8 @@ class RefAssetBaru4
 extends Model<IRefAssetBaru4Attributes, Optional<IRefAssetBaru4Attributes, "udch" | "udcr">>
 implements IRefAssetBaru4Attributes {
     declare kode_coa_4 : string | null ;
-	declare kode_asset_3 : string | null ;
-	declare kode_asset_4 : string | null ;
+	declare kode_asset_3 : string ;
+	declare kode_asset_4 : string ;
 	declare uraian_kelompok : string | null ;
 	declare udcr : Date | null ;
 	declare udch : Date | null ;
@@ -30,7 +30,7 @@ RefAssetBaru4.init(
         },
         kode_asset_3 : {
           type : DataTypes.STRING(),
-          allowNull :true,  
+          allowNull :false,  
         },
         kode_asset_4 : {
           type : DataTypes.STRING(),

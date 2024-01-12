@@ -4,7 +4,7 @@ import RefAssetBaru4 from "./refassetbaru4-model";
 
 export interface IRefAssetBaru5Attributes {
     kode_coa_5 : string | null,
-	kode_asset_4 : string | null,
+	kode_asset_4 : string,
 	kode_asset_5 : string,
 	uraian_sub_kelompok : string | null,
 	udcr : Date | null,
@@ -15,7 +15,7 @@ class RefAssetBaru5
 extends Model<IRefAssetBaru5Attributes, Optional<IRefAssetBaru5Attributes, "udch" | "udcr">>
 implements IRefAssetBaru5Attributes {
     declare kode_coa_5 : string | null ;
-	declare kode_asset_4 : string | null ;
+	declare kode_asset_4 : string;
 	declare kode_asset_5 : string ;
 	declare uraian_sub_kelompok : string | null ;
 	declare udcr : Date | null ;
@@ -31,7 +31,7 @@ RefAssetBaru5.init(
         },
         kode_asset_4 : {
             type : DataTypes.STRING(),
-            allowNull : true
+            allowNull : false
         },
         kode_asset_5 : {
             type : DataTypes.STRING(),

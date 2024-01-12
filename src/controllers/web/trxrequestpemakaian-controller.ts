@@ -79,8 +79,28 @@ const getRequestPemakaian = async (
 	}
 }
 
+const hapusPemakaian =async (
+	req:Request,
+	res : Response,
+	next : NextFunction) : Promise<void> => {
+	try {
+		const kode : string = req.params.kode
+
+		const [request, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.hapusPemakaian(kode)
+
+		if(err){
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 204, request)
+
+	} catch (error) {
+		next(error)
+	}
+}
 
 export default {
 	excelPemakaian,
-	getRequestPemakaian
+	getRequestPemakaian,
+	hapusPemakaian
 }

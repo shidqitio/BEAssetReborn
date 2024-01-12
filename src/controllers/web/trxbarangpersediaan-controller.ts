@@ -372,6 +372,25 @@ const uploadFileBast =async (
     }
 }
 
+const hapusBastByUnit =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.kode
+
+        const [Bast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.hapusBastByUnit(kode)
+
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 204, Bast)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     getForm,
     getBarangPromise,
@@ -386,5 +405,6 @@ export default {
     pembelianUpload,
     BastBarangPersediaanExist,
     DetailBarangExist,
-    uploadFileBast
+    uploadFileBast,
+    hapusBastByUnit
 }

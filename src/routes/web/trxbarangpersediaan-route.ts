@@ -35,4 +35,6 @@ routes.get("/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanCont
 
 routes.put("/update-excel/detail", uploadImage.single("file"), trxbarangpersediaanController.uploadFileBast)
 
+routes.delete("/hapus-excel/:kode", trxbarangpersediaanController.hapusBastByUnit)
+
 export default routes

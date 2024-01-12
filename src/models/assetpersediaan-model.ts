@@ -5,8 +5,8 @@ import RefAssetBaru6 from "./refassetbaru6-model";
 export interface IAssetPersediaanAttributes {
     kode_asset_6 : string,
 	kode_barang_persediaan : string,
-	nama_persediaan : string,
-	satuan : string,
+	nama_persediaan : string | null,
+	satuan : string | null,
 	ucr : string | null,
 	uch : string | null,
 	udcr? : Date | undefined,
@@ -18,8 +18,8 @@ extends Model<IAssetPersediaanAttributes, Optional<IAssetPersediaanAttributes, "
 implements IAssetPersediaanAttributes {
     declare kode_asset_6 : string ;
 	declare kode_barang_persediaan : string ;
-	declare nama_persediaan : string ;
-	declare satuan : string ;
+	declare nama_persediaan : string | null ;
+	declare satuan : string | null ;
 	declare ucr : string | null ;
 	declare uch : string | null ;
 	declare udcr? : Date | undefined ;

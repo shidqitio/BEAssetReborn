@@ -7,5 +7,7 @@ routes.put("/upload-excel", trxrequestpemakaianController.excelPemakaian)
 
 routes.get("/pemakaian/:id", trxrequestpemakaianController.getRequestPemakaian)
 
+routes.delete("/hapus-pemakaian/:kode", trxrequestpemakaianController.hapusPemakaian)
+
 
 export default routes

@@ -125,7 +125,70 @@ const getRequestPemakaian =async (
     }
 }
 
+const hapusPemakaian =async (
+    kode:string) : Promise<[any | null, any | null]> => {
+        const t = await db.transaction()
+    try {
+        const exRequest : TrxRequestPemakaian[] = await TrxRequestPemakaian.findAll({
+            where : {
+                kode_unit : kode
+            }, 
+            transaction : t
+        })
+
+        if(exRequest.length === 0 ) {
+            return [null, {code : 499, message : "Data Tidak ada"}]
+        }
+
+        const deleteRequest = await TrxRequestPemakaian.destroy({
+            where : {
+                kode_unit : kode
+            },
+            transaction : t
+        })
+
+        if(!deleteRequest) {
+            return [null, {code : 499, message : "Data Gagal Hapus"}]
+        }
+
+        const cekStok = await TrxBarangPersediaanDetail.findAll({
+            where : {
+                kode_unit : kode
+            },
+            transaction : t
+        })
+
+        if(cekStok.length === 0){
+            return [null, {code : 499, message : "Data Stok Tidak Ada"}]
+        }
+
+        const updateStok = await TrxBarangPersediaanDetail.update({
+            status_pemakaian : status_pemakaian.option1,
+            kode_pemakaian : null
+        }, 
+        {
+            where : {
+                kode_unit : kode
+            },
+            transaction : t
+        })
+
+
+        if(updateStok[0] === 0) {
+            return [null, {code : 499, message : "Ubah Stok Gagal"}]
+        }
+
+        await t.commit()
+
+        return [exRequest, null]
+    } catch (error: any) {
+        t.rollback()
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     excelPemakaian,
-    getRequestPemakaian
+    getRequestPemakaian,
+    hapusPemakaian
 }

@@ -6,7 +6,7 @@ export interface IRefAssetBaru6Attributes {
     kode_coa_6 : string | null,
 	kode_asset_5 : string,
 	kode_asset_6 : string,
-	uraian_sub_sub_kelompok : string,
+	uraian_sub_sub_kelompok : string | null,
 	udcr : Date | undefined,
 	udch : Date | undefined,
 }
@@ -17,7 +17,7 @@ implements IRefAssetBaru6Attributes {
     declare kode_coa_6 : string | null ;
 	declare kode_asset_5 : string ;
 	declare kode_asset_6 : string ;
-	declare uraian_sub_sub_kelompok : string ;
+	declare uraian_sub_sub_kelompok : string | null ;
 	declare udcr : Date | undefined ;
 	declare udch : Date | undefined ;
 }
@@ -31,7 +31,7 @@ RefAssetBaru6.init(
         },
 	    kode_asset_5: {
             type : DataTypes.STRING(),
-            allowNull :true
+            allowNull :false
         },
 	    kode_asset_6: {
             type : DataTypes.STRING(),

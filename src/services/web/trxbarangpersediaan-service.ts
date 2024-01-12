@@ -572,20 +572,24 @@ const pembelianUpload = async (
             })
 
             if(exBast){
-                throw new CustomError(499, "Nomor Dokumen Sudah Terpakai")
+                // throw new CustomError(499, "Nomor Dokumen Sudah Terpakai")
+                await t.rollback()
+                return[null, {code : 499, message : "Nomor Dokumen Sudah Terpakai"}]
             }
-            
+
             let create_bast = await TrxBastPersediaan.create({
                 nomor_dokumen : array_awal[x].nomor_dokumen,
-                kode_persediaan : 3,
+                kode_persediaan : 1,
                 tanggal_dokumen : array_awal[x].tanggal_dokumen,
                 tanggal_pembukuan : array_awal[x].tanggal_pembukuan,
                 kode_unit : array_awal[x].kode_unit,
-                nilai_total : array_awal[x].nilai_total, 
+                nilai_total : array_awal[x].nilai_bast, 
             }, {transaction : t})
 
             if (!create_bast) {
-                throw new CustomError(499, "Gagal Melakukan Insert Data")
+            // throw new CustomError(499, "Gagal Melakukan Insert Data")
+            await t.rollback()
+            return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
             }
 
             let array_kedua = array_awal[x].PersediaanHeader.length
@@ -604,8 +608,12 @@ const pembelianUpload = async (
                     status :1
                 }, {transaction :t})
               
-                if (!create_bast) {
-                    throw new CustomError(499, "Gagal Melakukan Insert Data")
+                if(!createBarangHeader) {
+                    // await t.rollback()
+                    // throw new CustomError(499, "Gagal Melakukan Insert Data")
+
+                    await t.rollback()
+                    return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
                 }
 
 
@@ -641,35 +649,35 @@ const pembelianUpload = async (
                             kode_urut : hasil,
                             kode_unit : array_awal[x].kode_unit,
                             nama_barang : array_isi_2[z].nama_barang,
-                            harga_satuan : array_isi[z].harga_satuan,
+                            harga_satuan : array_isi_2[z].harga_satuan,
                             keterangan : array_isi_2[z].keterangan,
                             satuan : array_isi_2[z].satuan,
                             tahun : array_isi_2[z].tahun,
-                                pakai_unit : pakai_unit.option2,
-                                status_pemakaian : status_pemakaian.option1
+                            pakai_unit : pakai_unit.option2,
+                            status_pemakaian : status_pemakaian.option1
                         }, {transaction : t})
 
                         if(!insert_barang) {
-                            throw new CustomError(499, "Data Insert Gagal")
+                            await t.rollback()
+                            return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                            // throw new CustomError(499, "Data Insert Gagal ")
                         }
                     }
                 }
             }
-        }
-    
-    
-   
+        }   
     // console.log(dataCreate.transaction)
     await t.commit()
     return [array_awal, null]
     } catch (error : any) {
-        t.rollback()
+        await t.rollback()
         // Handle transaction or other errors
-        console.error("Transaction error:", error);
+        // console.error("Transaction error:", error);
 
         return [null, {code : 500, message : error.message}]
     }
 };
+
 
 const BastBarangPersediaanExist =async (
     kode_unit:string) : Promise<[any | null , any | null]> => {
@@ -789,6 +797,80 @@ const uploadFileBast =async (
     }
 }
 
+const hapusBastByUnit =async (
+    kode:string) : Promise<[any | null , any | null]> => {
+        const t = await db.transaction()
+    try {
+        const exBast : TrxBastPersediaan[] = await TrxBastPersediaan.findAll({
+            where : {
+                kode_unit : kode
+            },
+            raw : true,
+            transaction : t
+        })
+
+        if(exBast.length === 0) {
+            return [null, {code : 500, message : "Data Tidak Ada"}]
+        } 
+
+        const data_bast : TrxBarangPersediaanDetail[] = await TrxBarangPersediaanDetail.findAll({
+            where : {
+                kode_unit : kode,
+                status_pemakaian : 'BarangTerpakai',
+            },
+            transaction : t 
+        })
+
+        if (data_bast.length != 0) {
+            return[null, {code : 499, message : "Data Sudah Terpakai"}]
+        }
+
+
+        const hapusBast = await TrxBastPersediaan.destroy({
+            where : {
+                kode_unit : kode
+            },
+            transaction : t
+        })
+
+        if(!hapusBast){
+           
+            return [null, {code : 499, message : "Data Gagal Hapus"}]
+        }
+
+        let hapus_data = exBast.map(async (item: any) => {
+            const delete_header = await TrxBarangPersediaanHeader.destroy({
+              where: {
+                nomor_dokumen: item.nomor_dokumen,
+              },
+              transaction: t,
+            });
+      
+            if (!delete_header) {
+              return [null, { code: 499, message: "Data Header Gagal Hapus" }];
+            }
+      
+            const delete_detail = await TrxBarangPersediaanDetail.destroy({
+              where: {
+                nomor_dokumen: item.nomor_dokumen,
+              },
+              transaction: t,
+            });
+      
+            if (!delete_detail) {
+              return [null, { code: 499, message: "Data Detail Gagal Hapus" }];
+            }
+          });
+
+        await Promise.all(hapus_data)
+        await t.commit()
+        return [exBast, null]
+        
+    } catch (error : any) {
+        t.rollback()
+        return [null, {code : 500, message : error.message}]
+    }
+}
 
 export default {
     getBarangPromise,
@@ -804,5 +886,6 @@ export default {
     pembelianUpload,
     BastBarangPersediaanExist,
     DetailBarangExist,
-    uploadFileBast
+    uploadFileBast,
+    hapusBastByUnit
 }
