@@ -732,7 +732,7 @@ const DetailBarangExist =async (
                 "nama_barang",
                 "harga_satuan"
             ],
-            group : "kode_barang_persediaan"
+            group : ["kode_barang_persediaan", "harga_satuan"]
         })
 
         if (!exDetailBarang) {
