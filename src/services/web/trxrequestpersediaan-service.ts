@@ -81,7 +81,7 @@ const excelPemakaian =async (
                 await t.rollback()
                 return [null, {code : 499, message : `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai`}]
             }
-
+            //Tes Command
 
             let updateBarang : any = await db.query(`
                 UPDATE trx_barang_persediaan_detail a 
