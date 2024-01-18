@@ -61,10 +61,27 @@ const excelPemakaian =async (
                 transaction : t
             })
 
-            if(dataBarang.length === 0) {
+            let countDataBarang = await TrxBarangPersediaanDetail.count({
+                where : {
+                    kode_barang_persediaan : array_awal[x].kode_barang_persediaan,
+                    kode_unit : array_awal[x].kode_unit,
+                    status_pemakaian : status_pemakaian.option1,
+                    pakai_unit : pakai_unit.option2
+                },
+                transaction : t
+            })
+
+            if(countDataBarang < array_awal[x].jumlah){
                 await t.rollback()
-                return [null, {code : 499, message : "Data Tidak ada / Sudah habis terpakai"}]
+                return [null, {code : 499, message : `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai || Jumlah Barang Diminta : ${array_awal[x].jumlah} || Jumlah Barang Exist : ${countDataBarang}`}]
+            
             }
+            if(dataBarang.length === 0) {
+                // throw new CustomError(499,  `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai`)
+                await t.rollback()
+                return [null, {code : 499, message : `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai`}]
+            }
+
 
             let updateBarang : any = await db.query(`
                 UPDATE trx_barang_persediaan_detail a 
