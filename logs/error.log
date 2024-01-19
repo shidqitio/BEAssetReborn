@@ -6,3 +6,131 @@
   code: 499,
   status: 'error'
 }
+[2024-01-18T14:47:05.682] [ERROR] error - CustomError: barang_gagal.push is not a function
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-01-18T14:56:09.086] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T14:56:29.795] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T14:57:20.793] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T14:57:32.609] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T14:58:18.566] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T14:58:58.445] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:00:22.804] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:01:19.490] [ERROR] error - CustomError: [object Object],[object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:03:36.500] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:03:48.983] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:04:25.168] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:04:31.053] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:04:52.878] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:05:11.077] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}
+[2024-01-18T15:05:35.459] [ERROR] error - CustomError: [object Object]
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 499,
+  status: 'error'
+}

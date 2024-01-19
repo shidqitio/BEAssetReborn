@@ -365,7 +365,7 @@ const uploadFileBast =async (
         if(err) {
             throw new CustomError(err.code, err.message)
         }
-
+        
         responseSuccess(res, 202, bast)
     } catch (error) {
         next(error)

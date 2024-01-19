@@ -248,6 +248,86 @@ const AddAssetBaruPersediaan =async (
     }
 }
 
+const updateAssetBaru4 =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.kode_asset_4
+        const request : RefAssetBaru4Request = req.body
+
+        const [Asset, err] : [RefAssetBaru4Response, IErrorResponse] = await assemasterService.updateAssetBaru4(kode, request)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,202,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const updateAssetBaru5 =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.kode_asset_5
+        const request : RefAssetBaru5Request = req.body
+
+        const [Asset, err] : [RefAssetBaru5Response, IErrorResponse] = await assemasterService.updateAssetBaru5(kode, request)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,202,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const updateAssetBaru6 =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.kode_asset_6
+        const request : RefAssetBaru6Request = req.body
+
+        const [Asset, err] : [RefAssetBaru6Response, IErrorResponse] = await assemasterService.updateAssetBaru6(kode, request)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,202,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const updateRefPersediaan =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode : string = req.params.kode_barang_persediaan
+        const request : AssetPersediaanRequest = req.body
+
+        const [Asset, err] : [RefAssetPersediaanResponse, IErrorResponse] = await assemasterService.updateRefPersediaan(kode, request)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,202,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     RefAssetBaru3byId,
     RefAssetBaru4byId,
@@ -257,5 +337,9 @@ export default {
     AddAssetBaru4,
     AddAssetBaru5,
     AddAssetBaru6,
-    AddAssetBaruPersediaan
+    AddAssetBaruPersediaan,
+    updateAssetBaru4,
+    updateAssetBaru5,
+    updateAssetBaru6,
+    updateRefPersediaan,
 }
