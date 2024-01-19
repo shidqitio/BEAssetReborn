@@ -779,7 +779,9 @@ const uploadFileBast =async (
 
             if(file && file.path){
                 // console.log(file.path)
-                 await fs.unlink(path.join(__dirname,`../../../src/public/images/bast/${lastPart}`))
+                let unlink = await fs.unlink(path.join(__dirname,`../../../src/public/pdf/bast/${lastPart}`))
+                console.log(unlink)
+               
             }
         }
 
@@ -796,7 +798,6 @@ const uploadFileBast =async (
         }
     }
 }
-
 const hapusBastByUnit =async (
     kode:string) : Promise<[any | null , any | null]> => {
         const t = await db.transaction()

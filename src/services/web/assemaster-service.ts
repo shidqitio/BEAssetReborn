@@ -330,6 +330,101 @@ const AddAssetBaruPersediaan =async (
     }
 }
 
+const updateAssetBaru4 =async (
+    kode:string, request: RefAssetBaru4Request) : Promise<[any | null, any | null]> => {
+    try {
+        const exAsset : RefAssetBaru4 | null = await RefAssetBaru4.findByPk(kode)
+
+        if(!exAsset) {
+            return [null, {code : 409, message : "Data Tidak Ada"}]
+        }
+
+        exAsset.uraian_kelompok = request.uraian_kelompok
+
+        const response = await exAsset.save()
+
+        if(!response){
+            return [null, {code : 499, message : "Data Gagal Update"}]
+        }
+
+        return [exAsset, null]
+    } catch (error: any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const updateAssetBaru5 =async (
+    kode:string, request: RefAssetBaru5Request) : Promise<[any | null, any | null]>  => {
+    try {
+        const exAsset : RefAssetBaru5 | null = await RefAssetBaru5.findByPk(kode)
+
+        if(!exAsset) {
+            return [null, {code : 409, message : "Data Tidak Ada"}]
+        }
+
+        exAsset.uraian_sub_kelompok = request.uraian_sub_kelompok
+
+        const response = await exAsset.save()
+
+        if(!response){
+            return [null, {code : 499, message : "Data Gagal Update"}]
+        }
+
+        return [exAsset, null]
+    } catch (error: any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const updateAssetBaru6 =async (
+    kode:string, request: RefAssetBaru6Request) : Promise<[any | null, any | null]>  => {
+    try {
+        const exAsset : RefAssetBaru6 | null = await RefAssetBaru6.findByPk(kode)
+
+        if(!exAsset) {
+            return [null, {code : 409, message : "Data Tidak Ada"}]
+        }
+
+        exAsset.uraian_sub_sub_kelompok = request.uraian_sub_sub_kelompok
+
+        const response = await exAsset.save()
+
+        if(!response){
+            return [null, {code : 499, message : "Data Gagal Update"}]
+        }
+
+        return [exAsset, null]
+    } catch (error: any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const updateRefPersediaan =async (
+    kode:string, request: AssetPersediaanRequest) : Promise<[any | null, any | null]>  => {
+    try {
+        const exAsset : AssetPersediaan | null = await AssetPersediaan.findByPk(kode)
+
+        if(!exAsset) {
+            return [null, {code : 409, message : "Data Tidak Ada"}]
+        }
+
+        exAsset.nama_persediaan = request.nama_persediaan
+        exAsset.satuan = request.satuan
+
+        const response = await exAsset.save()
+
+        if(!response){
+            return [null, {code : 499, message : "Data Gagal Update"}]
+        }
+
+        return [exAsset, null]
+    } catch (error: any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+
+
 export default {
 RefAssetBaru3byId,
 RefAssetBaru4byId,
@@ -339,5 +434,9 @@ RefAssetPersediaan,
 AddAssetBaru4,
 AddAssetBaru5,
 AddAssetBaru6,
-AddAssetBaruPersediaan
+AddAssetBaruPersediaan,
+updateAssetBaru4,
+updateAssetBaru5,
+updateAssetBaru6,
+updateRefPersediaan,
 }
