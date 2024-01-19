@@ -10,12 +10,19 @@ import db from "../../config/database";
 import generateNumber from '../../utils/generatenumber'
 import CustomError from "../../middlewares/error-handler";
 
+export interface barang_gagal {
+                alasan : string,
+                kode_barang_persediaan: string,
+                nama_barang_persediaan : string,
+                jumlah : number,
+}
 
 const excelPemakaian =async (
     request:RequestPemakaianExcel) : Promise<[any | null, any | null]> => {
     const t = await db.transaction()
     try {
         let array_awal : any = request.request_pemakaian
+        let datagagal  = []
         for(let x : number = 0 ; x < array_awal.length ; x++) {
             let max_request_pemakaian : number = await TrxRequestPemakaian.max("kode_pemakaian", {
                 transaction : t
@@ -27,7 +34,6 @@ const excelPemakaian =async (
             else{
                 hasil = generateNumber.generateNumber(max_request_pemakaian)
             }
-            console.log(hasil)
             let create_trxRequestPemakaian : TrxRequestPemakaianRequest = await TrxRequestPemakaian.create({
                 kode_pemakaian : hasil,
                 tanggal_pemakaian : array_awal[x].tanggal_pemakaian,
@@ -71,19 +77,8 @@ const excelPemakaian =async (
                 transaction : t
             })
 
-            if(countDataBarang < array_awal[x].jumlah){
-                await t.rollback()
-                return [null, {code : 499, message : `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai || Jumlah Barang Diminta : ${array_awal[x].jumlah} || Jumlah Barang Exist : ${countDataBarang}`}]
-            
-            }
-            if(dataBarang.length === 0) {
-                // throw new CustomError(499,  `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai`)
-                await t.rollback()
-                return [null, {code : 499, message : `${array_awal[x].kode_barang_persediaan} | ${array_awal[x].nama_barang_persediaan} Tidak ada / Sudah habis terpakai`}]
-            }
-            //Tes Command
-
-            let updateBarang : any = await db.query(`
+            if(countDataBarang >= array_awal[x].jumlah){
+                let updateBarang : any = await db.query(`
                 UPDATE trx_barang_persediaan_detail a 
                 SET a.status_pemakaian = :status_pemakaian, a.kode_pemakaian = :kode_pemakaian, a.uch = :uch
                 WHERE a.kode_urut IN (
@@ -110,13 +105,33 @@ const excelPemakaian =async (
                 await t.rollback()
                 return [null, {code : 499, message : "Data Update Gagal"}]
             }
-
+            }
+            else {
+            //Jika data salah 
+            let gagal = {} as barang_gagal  
+            gagal.alasan = "Data Kurang / Tidak Ada"
+            gagal.kode_barang_persediaan = array_awal[x].kode_barang_persediaan
+            gagal.nama_barang_persediaan = array_awal[x].nama_barang_persediaan
+            gagal.jumlah = array_awal[x].jumlah
+            // let barang_gagal = {
+            //     alasan : "Data Kurang / Tidak Ada",
+            //     kode_barang_persediaan: 
+            //     nama_barang_persediaan : array_awal[x].nama_barang_persediaan,
+            //     jumlah : array_awal[x].jumlah,
+            // }
+            datagagal.push(gagal)
+            }
         }
 
-        await t.commit()
+        if(datagagal.length > 0) {
+            await t.rollback()      
+            return [null, {code : 499, message : datagagal}]
+        }
+        else {
+            await t.commit()
 
-        return [array_awal, null]
-
+            return [array_awal, null]
+        }
     } catch (error : any) {
         await t.rollback()
         return [null, {code : 500, message : error.message}]
