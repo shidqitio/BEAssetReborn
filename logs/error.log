@@ -1,133 +1,211 @@
-[2024-01-12T10:17:01.261] [ERROR] error - CustomError: Data Tidak ada
-    at D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:92:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\RebuildAsset\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
+[2024-02-12T11:17:44.639] [ERROR] error - SERVER ERROR Error
+    at Query.run (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\dialects\mysql\query.js:46:25)
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async MySQLQueryInterface.createTable (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\dialects\abstract\query-interface.js:229:12)
+    at async Function.sync (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\model.js:1353:7)
+    at async Sequelize.sync (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\sequelize.js:825:9) {
+  name: 'SequelizeDatabaseError',
+  parent: Error: Can't create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")
+      at Packet.asError (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at Query.execute (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_CANT_CREATE_TABLE',
+    errno: 1005,
+    sqlState: 'HY000',
+    sqlMessage: 'Can\'t create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")',
+    sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+    parameters: undefined
+  },
+  original: Error: Can't create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")
+      at Packet.asError (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at Query.execute (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_CANT_CREATE_TABLE',
+    errno: 1005,
+    sqlState: 'HY000',
+    sqlMessage: 'Can\'t create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")',
+    sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+    parameters: undefined
+  },
+  sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+  parameters: {}
 }
-[2024-01-18T14:47:05.682] [ERROR] error - CustomError: barang_gagal.push is not a function
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+[2024-02-12T11:21:12.411] [ERROR] error - SERVER ERROR Error
+    at Query.run (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\dialects\mysql\query.js:46:25)
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async MySQLQueryInterface.createTable (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\dialects\abstract\query-interface.js:229:12)
+    at async Function.sync (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\model.js:1353:7)
+    at async Sequelize.sync (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\sequelize\src\sequelize.js:825:9) {
+  name: 'SequelizeDatabaseError',
+  parent: Error: Can't create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")
+      at Packet.asError (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at Query.execute (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_CANT_CREATE_TABLE',
+    errno: 1005,
+    sqlState: 'HY000',
+    sqlMessage: 'Can\'t create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")',
+    sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+    parameters: undefined
+  },
+  original: Error: Can't create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")
+      at Packet.asError (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packets\packet.js:728:17)
+      at Query.execute (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\commands\command.js:29:26)
+      at Connection.handlePacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:478:34)
+      at PacketParser.onPacket (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:97:12)
+      at PacketParser.executeStart (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\node_modules\mysql2\lib\connection.js:104:25)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9) {
+    code: 'ER_CANT_CREATE_TABLE',
+    errno: 1005,
+    sqlState: 'HY000',
+    sqlMessage: 'Can\'t create table `db_asset`.`trx_barang_persediaan_detail_new` (errno: 150 "Foreign key constraint is incorrectly formed")',
+    sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+    parameters: undefined
+  },
+  sql: "CREATE TABLE IF NOT EXISTS `trx_barang_persediaan_detail_new` (`nomor_dokumen` VARCHAR(255), `id_permintaan` VARCHAR(255), `kode_pemakaian` INTEGER, `kode_barang` VARCHAR(255), `kode_urut` INTEGER NOT NULL , `kode_barang_persediaan` VARCHAR(255) , `tahun` VARCHAR(255) , `kode_unit` VARCHAR(255) , `nama_barang` VARCHAR(255), `satuan` VARCHAR(255), `harga_satuan` DECIMAL(20,2), `keterangan` VARCHAR(255), `status_pemakaian` ENUM('Penyimpanan', 'TagBarang', 'BarangTerpakai'), `kode_gudang` VARCHAR(255), `pakai_unit` ENUM('Gudang', 'Unit', 'SiapPakai'), `kuantitas` INTEGER, `kuantitas_gerak` INTEGER, `ucr` VARCHAR(255), `uch` VARCHAR(255), `udcr` DATETIME, `udch` DATETIME, PRIMARY KEY (`kode_urut`, `kode_barang_persediaan`, `tahun`, `kode_unit`), FOREIGN KEY (`nomor_dokumen`) REFERENCES `trx_bast_persediaan` (`nomor_dokumen`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`kode_barang_persediaan`) REFERENCES `ref_asset_persediaan` (`kode_barang_persediaan`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;",
+  parameters: {}
+}
+[2024-02-12T11:24:04.525] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2024-01-18T14:56:09.086] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+[2024-02-12T11:24:11.392] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:25:00.427] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:26:15.018] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:26:18.174] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:27:02.637] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:27:28.444] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:28:36.365] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:29:20.128] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:30:34.832] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:30:37.470] [ERROR] error - CustomError: number 139 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-02-12T11:33:53.624] [ERROR] error - CustomError: Data Tidak ada
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 499,
   status: 'error'
 }
-[2024-01-18T14:56:29.795] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+[2024-02-12T11:33:57.781] [ERROR] error - CustomError: number 171 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
+  code: 500,
   status: 'error'
 }
-[2024-01-18T14:57:20.793] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+[2024-02-12T11:37:58.552] [ERROR] error - CustomError: number 171 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
+  code: 500,
   status: 'error'
 }
-[2024-01-18T14:57:32.609] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T14:58:18.566] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T14:58:58.445] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:00:22.804] [ERROR] error - CustomError: [object Object],[object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:01:19.490] [ERROR] error - CustomError: [object Object],[object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:03:36.500] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:03:48.983] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:04:25.168] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:04:31.053] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:04:52.878] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:05:11.077] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 499,
-  status: 'error'
-}
-[2024-01-18T15:05:35.459] [ERROR] error - CustomError: [object Object]
-    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:55:10
+[2024-02-12T12:04:01.011] [ERROR] error - CustomError: Data Tidak ada
+    at D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:167:10
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\assetRebuildClone\BEAssetReborn\src\controllers\web\trxrequestpemakaian-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {

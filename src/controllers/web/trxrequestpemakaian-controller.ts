@@ -61,6 +61,42 @@ const excelPemakaian =async (
 	}
 }
 
+const excelPemakaian2 =async (
+	req:Request,
+	res : Response,
+	next : NextFunction) : Promise<void> => {
+	try {
+		const request = req.body
+		const [pemakaian, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.excelPemakaian2(request)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 201, pemakaian)
+	} catch (error) {
+		next(error)
+	}
+}
+
+const excelPemakaian3 =async (
+	req:Request,
+	res : Response,
+	next : NextFunction) : Promise<void> => {
+	try {
+		const request = req.body
+		const [pemakaian, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.excelPemakaian3(request)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 201, pemakaian)
+	} catch (error) {
+		next(error)
+	}
+}
+
 const getRequestPemakaian = async (
 	req:Request,
 	res : Response,
@@ -68,6 +104,24 @@ const getRequestPemakaian = async (
 	try {
 		let kode = req.params.id
 		const [pakai, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.getRequestPemakaian(kode)
+
+		if(err) {
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 200, pakai)
+	} catch (error) {
+		next(error)
+	}
+}
+
+const getRequestPemakaian2 = async (
+	req:Request,
+	res : Response,
+	next : NextFunction) : Promise<void> => {
+	try {
+		let kode = req.params.id
+		const [pakai, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.getRequestPemakaian2(kode)
 
 		if(err) {
 			throw new CustomError(err.code, err.message)
@@ -99,8 +153,32 @@ const hapusPemakaian =async (
 	}
 }
 
+const hapusPemakaian2 = async (
+	req:Request,
+	res:Response,
+	next : NextFunction) => {
+	try {
+		const kode_unit : string = req.params.kode_unit
+
+		const [request, err] : [TrxRequestPemakaianResponse, IErrorResponse] = await trxrequestpemakaianService.hapusPemakaian2(kode_unit)
+
+		
+		if(err){
+			throw new CustomError(err.code, err.message)
+		}
+
+		responseSuccess(res, 204, request)
+	} catch (error) {
+		next(error)
+	}
+}
+
 export default {
 	excelPemakaian,
 	getRequestPemakaian,
-	hapusPemakaian
+	hapusPemakaian, 
+	excelPemakaian2,
+	excelPemakaian3,
+	getRequestPemakaian2,
+	hapusPemakaian2
 }

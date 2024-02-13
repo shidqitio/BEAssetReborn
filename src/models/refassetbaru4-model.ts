@@ -6,6 +6,7 @@ export interface IRefAssetBaru4Attributes {
 	kode_asset_3 : string,
 	kode_asset_4 : string,
 	uraian_kelompok : string | null,
+  kode_unit : string | null,
 	udcr : Date | null,
 	udch : Date | null,
 }
@@ -17,6 +18,7 @@ implements IRefAssetBaru4Attributes {
 	declare kode_asset_3 : string ;
 	declare kode_asset_4 : string ;
 	declare uraian_kelompok : string | null ;
+  declare kode_unit : string | null;
 	declare udcr : Date | null ;
 	declare udch : Date | null ;
 }
@@ -38,6 +40,10 @@ RefAssetBaru4.init(
           primaryKey : true 
         },
         uraian_kelompok : {
+          type : DataTypes.STRING(),
+          allowNull :true,  
+        },
+        kode_unit : {
           type : DataTypes.STRING(),
           allowNull :true,  
         },

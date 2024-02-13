@@ -187,6 +187,25 @@ const totalAssetUnit =async (
     }
 }
 
+const getRuangPromise =async (
+    req : Request,
+    res : Response,
+    next : NextFunction) : Promise<void> => {
+    try {
+        const kode_unit : string = req.params.kode_unit
+
+        const [ruang, err] : [any, IErrorResponse] = await ruangService.getRuangPromise(kode_unit)
+
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200,ruang)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 export default {
     storeRuang,
@@ -195,5 +214,6 @@ export default {
     getRuangAll,
     updateRuang,
     deleteRuang, 
-    totalAssetUnit
+    totalAssetUnit,
+    getRuangPromise
 }

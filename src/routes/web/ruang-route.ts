@@ -10,6 +10,8 @@ routes.get("/asset-ruang/:id", ruangController.assetByRuang)
 
 routes.get("/unit/total-asset/:id", ruangController.totalAssetUnit)
 
+routes.get("/promise/:kode_unit", ruangController.getRuangPromise)
+
 routes.post("/",ruangController.storeRuang)
 
 routes.put("/update-ruang/:id", ruangController.updateRuang)

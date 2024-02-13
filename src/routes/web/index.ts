@@ -1,5 +1,6 @@
 import express from "express";
 const routes = express.Router();
+import authenticate from "../../middlewares/auth";
 //ASSET
 import assetRoutes from "./asset-route"
 import pembukuanRoutes from "./pembukuan-route"

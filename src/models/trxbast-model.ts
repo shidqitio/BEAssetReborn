@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import db from "../config/database";
+import JenisPersediaan from "./jenispersediaan-model";
 
 export interface ITrxBastPersediaanAttributes {
     kode_persediaan : number | null,
@@ -107,6 +108,16 @@ TrxBastPersediaan.init(
         updatedAt : "udch"
     }
 )
+
+TrxBastPersediaan.belongsTo(JenisPersediaan, {
+    foreignKey : "kode_persediaan",
+    as : "jenispersediaan"
+})
+
+JenisPersediaan.hasMany(TrxBastPersediaan, {
+    foreignKey : "kode_persediaan",
+    as : "trxbastpersediaan"
+})
 
 
 export default TrxBastPersediaan
