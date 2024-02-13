@@ -18,4 +18,8 @@ routes.put("/master-5/:kode_asset_5", assetMaster.updateAssetBaru5);
 routes.put("/master-6/:kode_asset_6", assetMaster.updateAssetBaru6);
 routes.put("/persediaan/:kode_barang_persediaan", assetMaster.updateRefPersediaan);
 
+//PROMISE
+routes.get("/promise/kode4/:kode_unit", assetMaster.showPromiselvl4)
+routes.get("/promise/:kode_asset_4", assetMaster.showPromiseBarangBylvl4)
+
 export default routes

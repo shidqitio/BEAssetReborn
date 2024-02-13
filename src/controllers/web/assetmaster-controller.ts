@@ -328,6 +328,45 @@ const updateRefPersediaan =async (
     }
 }
 
+
+const showPromiselvl4 =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_unit : string = req.params.kode_unit
+
+        const [Asset, err] : [RefAssetBaru4Response, IErrorResponse] = await assemasterService.showPromiselvl4(kode_unit)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const showPromiseBarangBylvl4 =async (
+    req:Request,
+    res: Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_asset_4 : string = req.params.kode_asset_4
+
+        const [Asset, err] : [RefAssetPersediaanResponse, IErrorResponse] = await assemasterService.showPromiseBarangBylvl4(kode_asset_4)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200,Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     RefAssetBaru3byId,
     RefAssetBaru4byId,
@@ -342,4 +381,6 @@ export default {
     updateAssetBaru5,
     updateAssetBaru6,
     updateRefPersediaan,
+    showPromiselvl4,
+    showPromiseBarangBylvl4
 }

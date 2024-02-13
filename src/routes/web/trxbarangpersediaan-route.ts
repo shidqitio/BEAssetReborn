@@ -13,6 +13,10 @@ routes.post("/post-barang-promise", trxbarangpersediaanController.storeDataPromi
 
 routes.post("/post-barang-upload", trxbarangpersediaanController.pembelianUpload)
 
+routes.post("/cek-data/post-barang-upload", trxbarangpersediaanController.pembelianUpload2)
+
+routes.post("/cek-data-part3/post-barang-upload", trxbarangpersediaanController.pembelianUpload3)
+
 //gudang
 routes.post("/post-barang-detail", trxbarangpersediaanController.detailBarang)
 
@@ -36,5 +40,7 @@ routes.get("/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanCont
 routes.put("/update-excel/detail", uploadImage.single("file"), trxbarangpersediaanController.uploadFileBast)
 
 routes.delete("/hapus-excel/:kode", trxbarangpersediaanController.hapusBastByUnit)
+
+routes.get("/baru/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanController.DetailBarangExist2)
 
 export default routes
