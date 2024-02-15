@@ -240,6 +240,24 @@ const totalAssetUnit =async (
     }
 }
 
+const getRuangPromise =async (
+    kode_unit:string) : Promise<[any | null, any | null]> => {
+    try {
+        const ruang : RefRuang[]= await RefRuang.findAll({
+            where : {
+                kode_unit : kode_unit
+            }
+        })
+
+        if(ruang.length === 0 ) {
+            return [null, {code: 499, message : "Data Ruang Tidak Ada"}]
+        }
+
+        return [ruang, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
 
 export default {
     getRuangAll,
@@ -248,6 +266,7 @@ export default {
     updateRuang,
     deleteRuang,
     assetByRuang,
-    totalAssetUnit
+    totalAssetUnit,
+    getRuangPromise
 }
 

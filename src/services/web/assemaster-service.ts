@@ -4,8 +4,7 @@ import RefAssetBaru5 from "../../models/refassetbaru5-model";
 import RefAssetBaru6 from "../../models/refassetbaru6-model";
 import AssetPersediaan from "../../models/assetpersediaan-model";
 import { RefAssetBaru4Request, RefAssetBaru5Request, RefAssetBaru6Request, AssetPersediaanRequest } from "../../controllers/web/assetmaster-controller";
-
-
+import { Op } from "sequelize";
 
 const RefAssetBaru3byId =async (
     )  : Promise<[any | null, any | null]> => {
@@ -423,6 +422,75 @@ const updateRefPersediaan =async (
     }
 }
 
+//PROMISE
+const showPromiselvl4 =async (kode_unit : any) : Promise<[any | null, any | null]> => {
+    try {
+
+        let Asset : RefAssetBaru4[]
+
+
+        if(kode_unit !== 'UN31.DAAK' && kode_unit !== 'UN31.LLOP2' && kode_unit !== 'UN31.PPBI') {
+            Asset = await RefAssetBaru4.findAll({
+                where : {
+                    kode_asset_3 : '111',
+                    kode_unit : {
+                        [Op.is] : null
+                    }
+                },
+                attributes : [
+                    "kode_asset_3",
+                    "kode_asset_4",
+                    "uraian_kelompok",
+                    "kode_unit"
+                ]
+            })
+        } 
+        else {
+            Asset = await RefAssetBaru4.findAll({
+                where : {
+                    kode_asset_3 : '111', 
+                    kode_unit : kode_unit
+                },
+                attributes : [
+                    "kode_asset_3",
+                    "kode_asset_4",
+                    "uraian_kelompok",
+                    "kode_unit"
+                ]
+            })
+        }
+
+        if(Asset.length === 0 ) {
+            return [null, {code : 499, message : "Data Asset 4 Tidak Ada"}]
+        }
+
+        return [Asset, null]
+
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const showPromiseBarangBylvl4 =async (
+    kode_asset_4:string) : Promise<[any | null, any | null]> => {
+    try {
+        const Asset : AssetPersediaan[] = await AssetPersediaan.findAll({
+            where : {
+                kode_barang_persediaan : {
+                    [Op.like] : `${kode_asset_4}%`
+                }
+            }
+        })
+
+        if(Asset.length === 0) {
+            return [null, {code : 499, message : "Data Asset Tidak Ada"}]
+        }
+
+        return [Asset, null]
+    } catch (error: any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
 
 
 export default {
@@ -439,4 +507,6 @@ updateAssetBaru4,
 updateAssetBaru5,
 updateAssetBaru6,
 updateRefPersediaan,
+showPromiselvl4,
+showPromiseBarangBylvl4
 }

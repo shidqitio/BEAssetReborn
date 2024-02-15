@@ -313,6 +313,46 @@ const pembelianUpload = async (
         }
 }
 
+const pembelianUpload2 = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {    
+        try {
+            const request : any = req.body
+
+            const [persediaan, err] : [BarangDetailResponse, IErrorResponse] 
+            = await trxBarangPersediaanService.pembelianUpload2(request);
+            
+            if(err) {
+                throw new CustomError(err.code, err.message)
+            }
+
+            responseSuccess(res, 201, persediaan)
+        } catch (error) {
+            next(error)
+        }
+}
+
+const pembelianUpload3 = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {    
+        try {
+            const request : any = req.body
+
+            const [persediaan, err] : [BarangDetailResponse, IErrorResponse] 
+            = await trxBarangPersediaanService.pembelianUpload3(request);
+            
+            if(err) {
+                throw new CustomError(err.code, err.message)
+            }
+
+            responseSuccess(res, 201, persediaan)
+        } catch (error) {
+            next(error)
+        }
+}
+
 const BastBarangPersediaanExist =async (
     req:Request,
     res:Response,
@@ -342,6 +382,27 @@ const DetailBarangExist =async (
         const nomor_dokumen : any = req.query.nomor_dokumen
 
         const [BarangDetail, err] : [BarangDetailResponse, IErrorResponse] = await trxBarangPersediaanService.DetailBarangExist(kode_barang,kode_unit,nomor_dokumen)
+
+        if(err){
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res,200, BarangDetail)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const DetailBarangExist2 =async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const kode_barang : string =  req.params.kode_barang
+        const kode_unit : string = req.params.kode_unit
+        const nomor_dokumen : any = req.query.nomor_dokumen
+
+        const [BarangDetail, err] : [BarangDetailResponse, IErrorResponse] = await trxBarangPersediaanService.DetailBarangExist2(kode_barang,kode_unit,nomor_dokumen)
 
         if(err){
             throw new CustomError(err.code, err.message)
@@ -406,5 +467,8 @@ export default {
     BastBarangPersediaanExist,
     DetailBarangExist,
     uploadFileBast,
-    hapusBastByUnit
+    hapusBastByUnit,
+    pembelianUpload2,
+    pembelianUpload3,
+    DetailBarangExist2
 }

@@ -1,5 +1,8 @@
 import TrxBarangPersediaanHeader from "../../models/trxpersediaanheader-model";
 import TrxBarangPersediaanDetail from "../../models/trxpersediaandetail-model";
+import TrxBarangPersediaanDetail2  from "../../models/trxpersediaandetail2-model";
+import TrxBarangPersediaanDetail3 from "../../models/trxpersediaandetail3-model";
+import JenisPersediaan from "../../models/jenispersediaan-model";
 import TrxBastPersediaan from "../../models/trxbast-model";
 import { BarangPromiseRequest, BarangDetailRequest, BarangPromise, BarangExcelRequest } from "../../controllers/web/trxbarangpersediaan-controller";
 import { Op } from "sequelize";
@@ -14,6 +17,7 @@ import { removeFile, removeFileName } from "../../utils/remove-file";
 dotenv.config()
 import fs from "fs/promises";
 import path from "path"
+
 
 
 
@@ -579,7 +583,7 @@ const pembelianUpload = async (
 
             let create_bast = await TrxBastPersediaan.create({
                 nomor_dokumen : array_awal[x].nomor_dokumen,
-                kode_persediaan : 1,
+                kode_persediaan : array_awal[x].kode_persediaan,
                 tanggal_dokumen : array_awal[x].tanggal_dokumen,
                 tanggal_pembukuan : array_awal[x].tanggal_pembukuan,
                 kode_unit : array_awal[x].kode_unit,
@@ -678,6 +682,308 @@ const pembelianUpload = async (
     }
 };
 
+const pembelianUpload2 = async (
+    request: any) : Promise<[any | null , any | null]> => {
+    const t = await db.transaction();
+    try {
+        let array_awal : any = request.barang_bast
+        for(let x : number = 0 ; x < array_awal.length ; x++){
+            let exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findOne({
+                where : {
+                    nomor_dokumen : array_awal[x].nomor_dokumen,
+                    kode_unit : array_awal[x].kode_unit
+                },
+                transaction : t
+            })
+
+            if(exBast){
+                // throw new CustomError(499, "Nomor Dokumen Sudah Terpakai")
+                await t.rollback()
+                return[null, {code : 499, message : "Nomor Dokumen Sudah Terpakai"}]
+            }
+
+            let create_bast = await TrxBastPersediaan.create({
+                nomor_dokumen : array_awal[x].nomor_dokumen,
+                kode_persediaan : array_awal[x].kode_persediaan,
+                tanggal_dokumen : array_awal[x].tanggal_dokumen,
+                tanggal_pembukuan : array_awal[x].tanggal_pembukuan,
+                kode_unit : array_awal[x].kode_unit,
+                nilai_total : array_awal[x].nilai_bast, 
+            }, {transaction : t})
+
+            if (!create_bast) {
+            // throw new CustomError(499, "Gagal Melakukan Insert Data")
+            await t.rollback()
+            return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+            }
+
+            let array_kedua = array_awal[x].PersediaanHeader.length
+            let array_isi = array_awal[x].PersediaanHeader
+            
+
+            for (let y : number = 0 ; y < array_kedua ; y++) {
+                let harga_satuan_header = array_isi[y].harga_satuan * array_isi[y].jumlah
+                let createBarangHeader = await TrxBarangPersediaanHeader.create({
+                    nomor_dokumen : array_awal[x].nomor_dokumen,
+                    kode_barang : array_isi[y].kode_barang,
+                    nama_barang : array_isi[y].nama_barang,
+                    jumlah : array_isi[y].jumlah,
+                    harga_satuan : array_isi[y].harga_satuan,
+                    total : harga_satuan_header,
+                    status :1
+                }, {transaction :t})
+              
+                if(!createBarangHeader) {
+                    // await t.rollback()
+                    // throw new CustomError(499, "Gagal Melakukan Insert Data")
+
+                    await t.rollback()
+                    return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                }
+
+
+                let array_ketiga = array_isi[y].PersediaanDetail.length
+                let array_isi_2 = array_isi[y].PersediaanDetail
+
+                for(let z : number = 0 ; z < array_ketiga ; z++){
+                        let checkUrut : any = await TrxBarangPersediaanDetail2.findOne({
+                            attributes : ["kode_urut"],
+                            where : {
+                                kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan
+                            },
+                            order : [["kode_urut", "DESC"]],
+                            limit : 1, 
+                            transaction : t
+                        });
+                        console.log(checkUrut)
+                        let hasil : number
+                        if(checkUrut === null){
+                            hasil = 1
+                        }
+                        else {
+                            hasil = generatenumber.generateNumber(checkUrut.kode_urut)
+                            // console.log("TES :", hasil)
+                        }
+                        console.log(hasil)
+                    const insert_barang : TrxBarangPersediaanDetail2 = await TrxBarangPersediaanDetail2.create({
+                            nomor_dokumen : array_awal[x].nomor_dokumen,
+                            kode_barang : array_isi[y].kode_barang,
+                            kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan,
+                            kode_urut : hasil,
+                            kode_unit : array_awal[x].kode_unit,
+                            nama_barang : array_isi_2[z].nama_barang,
+                            harga_satuan : array_isi_2[z].harga_satuan,
+                            keterangan : array_isi_2[z].keterangan,
+                            satuan : array_isi_2[z].satuan,
+                            tahun : array_isi_2[z].tahun,
+                            pakai_unit : pakai_unit.option2,
+                            status_pemakaian : status_pemakaian.option1,
+                            kuantitas : array_isi_2[z].kuantitas,
+                            kuantitas_gerak : array_isi_2[z].kuantitas
+                    }, {transaction : t})
+
+                    if(!insert_barang) {
+                            await t.rollback()
+                            return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                    }
+                    // for(let xx : number = 0 ; xx < array_isi_2[z].kuantitas ; xx++){
+                    //     let checkUrut : any = await TrxBarangPersediaanDetail.findOne({
+                    //         attributes : ["kode_urut"],
+                    //         where : {
+                    //             kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan
+                    //         },
+                    //         order : [["kode_urut", "DESC"]],
+                    //         limit : 1, 
+                    //         transaction : t
+                    //     });
+                        
+                    //     let hasil : number
+                    //     if(checkUrut === null){
+                    //         hasil = 1
+                    //     }
+                    //     else {
+                    //         hasil = generatenumber.generateNumber(checkUrut.kode_urut)
+                    //         // console.log("TES :", hasil)
+                    //     }
+
+                      
+                    //     const insert_barang : TrxBarangPersediaanDetail = await TrxBarangPersediaanDetail.create({
+                    //         nomor_dokumen : array_awal[x].nomor_dokumen,
+                    //         kode_barang : array_isi[y].kode_barang,
+                    //         kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan,
+                    //         kode_urut : hasil,
+                    //         kode_unit : array_awal[x].kode_unit,
+                    //         nama_barang : array_isi_2[z].nama_barang,
+                    //         harga_satuan : array_isi_2[z].harga_satuan,
+                    //         keterangan : array_isi_2[z].keterangan,
+                    //         satuan : array_isi_2[z].satuan,
+                    //         tahun : array_isi_2[z].tahun,
+                    //         pakai_unit : pakai_unit.option2,
+                    //         status_pemakaian : status_pemakaian.option1
+                    //     }, {transaction : t})
+
+                    //     if(!insert_barang) {
+                    //         await t.rollback()
+                    //         return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                    //         // throw new CustomError(499, "Data Insert Gagal ")
+                    //     }
+                    // }
+                }
+            }
+        }   
+    // console.log(dataCreate.transaction)
+    await t.commit()
+    return [array_awal, null]
+    } catch (error : any) {
+        await t.rollback()
+        // Handle transaction or other errors
+        // console.error("Transaction error:", error);
+
+        return [null, {code : 500, message : error.message}]
+    }
+};
+
+const pembelianUpload3 = async (
+    request: any) : Promise<[any | null , any | null]> => {
+    const t = await db.transaction();
+    try {
+        let array_awal : any = request.barang_bast
+        for(let x : number = 0 ; x < array_awal.length ; x++){
+            let exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findOne({
+                where : {
+                    nomor_dokumen : array_awal[x].nomor_dokumen,
+                    kode_unit : array_awal[x].kode_unit
+                },
+                transaction : t
+            })
+
+            if(exBast){
+                // throw new CustomError(499, "Nomor Dokumen Sudah Terpakai")
+                await t.rollback()
+                return[null, {code : 499, message : "Nomor Dokumen Sudah Terpakai"}]
+            }
+
+            let create_bast = await TrxBastPersediaan.create({
+                nomor_dokumen : array_awal[x].nomor_dokumen,
+                kode_persediaan : array_awal[x].kode_persediaan,
+                tanggal_dokumen : array_awal[x].tanggal_dokumen,
+                tanggal_pembukuan : array_awal[x].tanggal_pembukuan,
+                kode_unit : array_awal[x].kode_unit,
+                nilai_total : array_awal[x].nilai_bast, 
+            }, {transaction : t})
+
+            if (!create_bast) {
+            // throw new CustomError(499, "Gagal Melakukan Insert Data")
+            await t.rollback()
+            return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+            }
+
+            let array_kedua = array_awal[x].PersediaanHeader.length
+            let array_isi = array_awal[x].PersediaanHeader
+            
+
+            for (let y : number = 0 ; y < array_kedua ; y++) {
+                let harga_satuan_header = array_isi[y].harga_satuan * array_isi[y].jumlah
+                let createBarangHeader = await TrxBarangPersediaanHeader.create({
+                    nomor_dokumen : array_awal[x].nomor_dokumen,
+                    kode_barang : array_isi[y].kode_barang,
+                    nama_barang : array_isi[y].nama_barang,
+                    jumlah : array_isi[y].jumlah,
+                    harga_satuan : array_isi[y].harga_satuan,
+                    total : harga_satuan_header,
+                    status : 1
+                }, {transaction :t})
+              
+                if(!createBarangHeader) {
+                    // await t.rollback()
+                    // throw new CustomError(499, "Gagal Melakukan Insert Data")
+
+                    await t.rollback()
+                    return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                }
+
+
+                let array_ketiga = array_isi[y].PersediaanDetail.length
+                let array_isi_2 = array_isi[y].PersediaanDetail
+                let array_insert : any = []
+
+                for(let z : number = 0 ; z < array_ketiga ; z++){
+                    let checkUrut : any = await TrxBarangPersediaanDetail3.findOne({
+                        attributes : ["kode_urut"],
+                        where : {
+                            kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan,
+                            kode_unit :  array_awal[x].kode_unit,
+                        },
+                        order : [["kode_urut", "DESC"]],
+                        limit : 1, 
+                    })
+
+                    console.log("TES ", checkUrut)
+
+                    let hasil: number = 1;
+                    if (checkUrut !== null) {
+                        hasil = checkUrut.kode_urut;
+                        console.log("TES")
+                    }
+
+                    for(let xx : number = 0 ; xx < array_isi_2[z].kuantitas ; xx++){
+                    
+                        
+                        // let hasil : number
+                        // if(checkUrut === null){
+                        //     hasil = 1
+                        // }
+                        // else {
+                        //     hasil = generatenumber.generateNumber(checkUrut.kode_urut)
+                        //     // console.log("TES :", hasil)
+                        // }
+                        console.log("CEK : ", hasil, array_isi_2[z].kode_barang_persediaan, array_awal[x].nomor_dokumen  )
+                        array_insert.push({
+                            nomor_dokumen : array_awal[x].nomor_dokumen,
+                            kode_barang : array_isi[y].kode_barang,
+                            kode_barang_persediaan : array_isi_2[z].kode_barang_persediaan,
+                            kode_urut : hasil,
+                            kode_unit : array_awal[x].kode_unit,
+                            nama_barang : array_isi_2[z].nama_barang,
+                            harga_satuan : array_isi_2[z].harga_satuan,
+                            keterangan : array_isi_2[z].keterangan,
+                            satuan : array_isi_2[z].satuan,
+                            tahun : array_isi_2[z].tahun,
+                            pakai_unit : pakai_unit.option2,
+                            status_pemakaian : status_pemakaian.option1
+                        })
+
+                       hasil++
+                    }
+                    // console.log(array_insert)
+                    
+                    const insert_barang : any = await TrxBarangPersediaanDetail3.bulkCreate(array_insert, {transaction : t})
+                    if(insert_barang) {
+                        console.log("BERHASIL")
+                    }
+                    // // console.log(insert_barang)
+                    // if(!insert_barang) {
+                    //         await t.rollback()
+                    //         return[null, {code : 499, message : "Gagal Melakukan Insert Data"}]
+                    // }
+                }
+            }
+        }
+    
+    
+   
+    // console.log(dataCreate.transaction)
+    await t.commit()
+    return [array_awal, null]
+    } catch (error : any) {
+        await t.rollback()
+        // Handle transaction or other errors
+        // console.error("Transaction error:", error);
+        // console.log(error)
+        return [null, {code : 500, message : error.message}]
+    }
+};
+
 
 const BastBarangPersediaanExist =async (
     kode_unit:string) : Promise<[any | null , any | null]> => {
@@ -687,9 +993,12 @@ const BastBarangPersediaanExist =async (
                 kode_unit : kode_unit
             },
             attributes : [
+                'kode_persediaan',
                 'tanggal_dokumen',
                 'tanggal_pembukuan',
                 'nomor_dokumen',
+                'nilai_total',
+                'file_path'
             ],
             include : [
                 {
@@ -700,6 +1009,14 @@ const BastBarangPersediaanExist =async (
                         "nama_barang",
                         "harga_satuan",
                         "total"
+                    ]
+                },
+                {
+                    model : JenisPersediaan, 
+                    as : "jenispersediaan",
+                    attributes : [
+                        'kode_persediaan',
+                        'nama_persediaan'
                     ]
                 }
             ]
@@ -715,10 +1032,41 @@ const BastBarangPersediaanExist =async (
     }
 }
 
+
+
 const DetailBarangExist =async (
     kode_barang:string, kode_unit : string, nomor_dokumen: string) : Promise<[any | null , any | null]>=> {
     try {
         const exDetailBarang : TrxBarangPersediaanDetail[] = await TrxBarangPersediaanDetail.findAll({
+            where : {
+                kode_barang : kode_barang,
+                kode_unit : kode_unit, 
+                nomor_dokumen : nomor_dokumen,
+                status_pemakaian : status_pemakaian.option1,
+                pakai_unit : pakai_unit.option2
+            },
+            attributes : [
+                [Sequelize.fn('COUNT', Sequelize.col('kode_urut')), 'kuantitas'],
+                "kode_barang_persediaan",
+                "nama_barang",
+                "harga_satuan"
+            ],
+            group : ["kode_barang_persediaan", "harga_satuan"]
+        })
+
+        if (!exDetailBarang) {
+            return [null, {code : 499, message : "Data Detail Barang Tidak Ada"}]
+        }
+        return [exDetailBarang, null]
+    } catch (error : any) {
+        return[null, {code : 500, message : error.message}]
+    }
+}
+
+const DetailBarangExist2 =async (
+    kode_barang:string, kode_unit : string, nomor_dokumen: string) : Promise<[any | null , any | null]>=> {
+    try {
+        const exDetailBarang : TrxBarangPersediaanDetail2[] = await TrxBarangPersediaanDetail2.findAll({
             where : {
                 kode_barang : kode_barang,
                 kode_unit : kode_unit, 
@@ -888,5 +1236,8 @@ export default {
     BastBarangPersediaanExist,
     DetailBarangExist,
     uploadFileBast,
-    hapusBastByUnit
+    hapusBastByUnit, 
+    pembelianUpload2,
+    pembelianUpload3,
+    DetailBarangExist2
 }

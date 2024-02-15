@@ -1,5 +1,6 @@
 import express from "express";
 const routes = express.Router();
+import authenticate from "../../middlewares/auth";
 //ASSET
 import assetRoutes from "./asset-route"
 import pembukuanRoutes from "./pembukuan-route"
@@ -19,6 +20,7 @@ import reklasifikasiRoutes from "./reklasifikasi-route";
 
 // LAPORAN PERSEDIAAN
 import laporanPersediaanRoutes from "./laporanpersediaan-route"
+import laporanRincianBarangRoutes from "./laporanrincian-barang-route"
 
 //ROUTING
 routes.use("/asset",assetRoutes)
@@ -45,5 +47,7 @@ routes.use("/reklasifikasi", reklasifikasiRoutes)
 
 // LAPORAN
 routes.use("/laporan-barang-persediaan", laporanPersediaanRoutes)
+
+routes.use("/laporan-rincian-barang", laporanRincianBarangRoutes)
 
 export default routes
