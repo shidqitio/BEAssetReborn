@@ -422,8 +422,7 @@ const hitungKode4 =async () : Promise<[any | null, any | null]>  => {
         left JOIN ref_asset_baru_6 c ON b.kode_asset_5 = c.kode_asset_5
         left JOIN ref_asset d ON c.kode_asset_6 = d.kode_asset_6
         left JOIN ref_daftar_barang e ON d.kode_asset = e.kode_asset
-        GROUP BY a.kode_asset_4
-        WHERE e.nup IS NOT NULL`,
+        GROUP BY a.kode_asset_4`,
         {
           type : QueryTypes.SELECT
         }
