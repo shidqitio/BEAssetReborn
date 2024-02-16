@@ -18,6 +18,10 @@ import assetmasterRoutes from "./assetmaster-route"
 // REKLASIFIKASI
 import reklasifikasiRoutes from "./reklasifikasi-route";
 
+// LAPORAN PERSEDIAAN
+import laporanPersediaanRoutes from "./laporanpersediaan-route"
+import laporanRincianBarangRoutes from "./laporanrincian-barang-route"
+
 //ROUTING
 routes.use("/asset",assetRoutes)
 
@@ -39,5 +43,11 @@ routes.use("/asset-master", assetmasterRoutes)
 
 // REKLASIFIKASI
 routes.use("/reklasifikasi", reklasifikasiRoutes)
+
+
+// LAPORAN
+routes.use("/laporan-barang-persediaan", laporanPersediaanRoutes)
+
+routes.use("/laporan-rincian-barang", laporanRincianBarangRoutes)
 
 export default routes

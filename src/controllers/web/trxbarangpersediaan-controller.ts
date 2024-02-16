@@ -79,19 +79,19 @@ export type BarangDetailResponse = {
 }
 
 export type BastResponse = {
-     kode_persediaan : number | null;
-	 nomor_dokumen : string;
-	 nama_penyedia : string | null;
-	 tanggal_dokumen : Date | undefined;
-	 tanggal_pembukuan : Date | undefined;
-	 nilai_total : number | null;
-	 kode_unit : string;
-	 status : number;
-	 alasan : Text | null;
-	 ucr : string | null;
-	 uch : string | null;
-	 udcr : Date | undefined;
-	 udch : Date | undefined;
+    kode_persediaan : number | null;
+    nomor_dokumen : string;
+    nama_penyedia : string | null;
+    tanggal_dokumen : Date | undefined;
+    tanggal_pembukuan : Date | undefined;
+    nilai_total : number | null;
+    kode_unit : string;
+    status : number;
+    alasan : Text | null;
+    ucr : string | null;
+    uch : string | null;
+    udcr : Date | undefined;
+    udch : Date | undefined;
 }
 
 const getForm = async (
