@@ -2,9 +2,12 @@ import TrxBarangPersediaanHeader from "../../models/trxpersediaanheader-model";
 import TrxBarangPersediaanDetail from "../../models/trxpersediaandetail-model";
 import TrxBarangPersediaanDetail2  from "../../models/trxpersediaandetail2-model";
 import TrxBarangPersediaanDetail3 from "../../models/trxpersediaandetail3-model";
+import TrxBarangPenampung from "../../models/trxbarangpenampung-model";
 import JenisPersediaan from "../../models/jenispersediaan-model";
 import TrxBastPersediaan from "../../models/trxbast-model";
-import { BarangPromiseRequest, BarangDetailRequest, BarangPromise, BarangExcelRequest } from "../../controllers/web/trxbarangpersediaan-controller";
+import { BarangPromiseRequest, BarangDetailRequest, BarangPromise, BarangExcelRequest, StoreBarangPromiseNew, BarangPromiseNew,
+    RequestBarangPromise
+} from "../../controllers/web/trxbarangpersediaan-controller";
 import { Op } from "sequelize";
 import Sequelize from "sequelize";
 import sequelize from "sequelize";
@@ -559,8 +562,6 @@ const kasubagParaf =async (
     }
 }
 
-
-
 const pembelianUpload = async (
     request: any) : Promise<[any | null , any | null]> => {
     const t = await db.transaction();
@@ -984,7 +985,6 @@ const pembelianUpload3 = async (
     }
 };
 
-
 const BastBarangPersediaanExist =async (
     kode_unit:string) : Promise<[any | null , any | null]> => {
     try {
@@ -1031,7 +1031,6 @@ const BastBarangPersediaanExist =async (
         return [null, {code : 500, message : error.message}]
     }
 }
-
 
 
 const DetailBarangExist =async (
@@ -1221,6 +1220,252 @@ const hapusBastByUnit =async (
     }
 }
 
+
+
+//================================================ FLOW IDEAL ================================================
+
+//STORE KE PENAMPUNG
+const storeDataPromiseNew = async (
+    request:StoreBarangPromiseNew) :  Promise<[any | null, any | null]>  => {
+    const t = await db.transaction()
+    try {
+        const exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findOne({
+            where : {
+                nomor_dokumen : request.nomor_dokumen
+            },
+            transaction  : t
+        })
+
+        if(exBast) {
+            return [null, {code : 499, message : "Data Sudah Ada"}]
+        }
+
+        const newBast : TrxBastPersediaan = await TrxBastPersediaan.create({
+            nomor_dokumen : request.nomor_dokumen,
+            nama_penyedia : request.nama_penyedia,
+            tanggal_dokumen : request.tanggal_dokumen,
+            tanggal_pembukuan : request.tanggal_pembukuan,
+            nilai_total : request.nilai_total,
+            kode_persediaan : request.kode_persediaan,
+            kode_unit : request.kode_unit,
+            alasan : request.alasan,
+            status : 1,
+            ucr : request.ucr,
+        },{transaction : t})
+
+        if(!newBast) {
+            return [null, {code : 499, message : "Gagal Input Data"}]
+        }
+
+        let arrayPromise = request.BarangPromise
+        let BarangPromise = []
+        for(const dataArray of arrayPromise) {
+            const penampungExist : TrxBarangPenampung | null= await TrxBarangPenampung.findOne(
+                {
+                    where : {
+                        nomor_dokumen : request.nomor_dokumen,
+                        kode_barang_persediaan : dataArray.kode_barang_persediaan,
+                        harga_satuan : dataArray.harga_satuan
+                    }
+                }
+            )
+            if(penampungExist !== null) {
+                return [null, {code : 499, message : "Data Input Doubel"}]
+            }
+
+            const kode_barang = dataArray.kode_barang_persediaan.substring(0,9)
+
+            const penampungInsert : TrxBarangPenampung = await TrxBarangPenampung.create({
+                kode_barang_persediaan : dataArray.kode_barang_persediaan,
+                kode_barang : kode_barang,
+                nomor_dokumen : request.nomor_dokumen,
+                tahun : request.tahun,
+                kode_unit : request.kode_unit,
+                harga_satuan : dataArray.harga_satuan,
+                kuantitas : dataArray.kuantitas,
+                harga_total : dataArray.kuantitas * dataArray.harga_satuan
+            }, {transaction : t})
+
+            if(!penampungInsert) {
+                return [null, {code : 499, message : "Data Input Penampung Gagal"}]
+            }
+
+            BarangPromise.push(penampungInsert)
+        }
+
+        t.commit()
+
+        return [newBast, null]
+    } catch (error : any) {
+        t.rollback()
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+//UBAH KODE BARANG
+const ubahKodeBarang = async (
+    kode_urut:number, request:Omit<RequestBarangPromise,
+    "kuantitas" |
+    "satuan" | 
+    "harga_satuan" | 
+    "harga_total">
+    ) :  Promise<[any | null, any | null]>   => {
+    try {
+        const exBarangPenampung : TrxBarangPenampung | null = await TrxBarangPenampung.findByPk(kode_urut)
+
+        if(!exBarangPenampung) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+        exBarangPenampung.kode_barang_persediaan= request.kode_barang_persediaan
+        exBarangPenampung.uch= request.uch
+
+        const kode_barang = request.kode_barang_persediaan.substring(0,9)
+
+        exBarangPenampung.kode_barang = kode_barang
+
+        const response = await exBarangPenampung.save()
+        // console.log(response)
+        if(!response) {
+            return [null, {code:499, message : "Data Gagal Ubah"}]
+        }
+
+        return [exBarangPenampung, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const kirimKasubagNew = async (
+    nomor_dokumen:string) :  Promise<[any | null, any | null]>  => {
+    try {
+        const exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findByPk(nomor_dokumen)
+
+        if(!exBast) {
+            return [null, {code : 499, message : "Data Bast Tidak Ada"}]
+        }
+
+        exBast.status = 2
+
+        const response = await exBast.save()
+
+        if(!response) {
+            return [null, {code : 499, message : "Gagal Kirim Kasubag"}]
+        }
+
+        return [exBast, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const storeDataParafKasubag = async (
+    nomor_dokumen:string) :  Promise<[any | null, any | null]>  => {
+    const t = await db.transaction()
+    try {
+        console.log(nomor_dokumen)
+        const exBast : TrxBastPersediaan | null = await TrxBastPersediaan.findByPk(nomor_dokumen)
+
+        if(!exBast) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        exBast.status = 3;
+        
+        const response = await exBast.save({transaction : t})
+
+        if(!response) {
+            return [null, {code : 499, message : "Gagal Merubah Status"}]
+        }
+
+        const exBarangPenampung : TrxBarangPenampung[] = await TrxBarangPenampung.findAll({
+            where : {
+                nomor_dokumen : nomor_dokumen
+            },
+            raw : true,
+            transaction : t
+        })
+
+        if(exBarangPenampung.length === 0) {
+            return [null, {code : 499, message : "Data Detail Barang Tidak Ada"}]
+        }
+
+        for(const dataPenampung of exBarangPenampung ) {
+            const detailBarang : TrxBarangPersediaanDetail2 | null =  await TrxBarangPersediaanDetail2.findOne({
+                attributes : [
+                    "kode_urut"
+                ],
+                where : {
+                    kode_barang_persediaan : dataPenampung.kode_barang_persediaan
+                },
+                order : [["kode_urut", "DESC"]],
+                transaction : t
+            })
+            let kode_urut
+            if(detailBarang === null) {
+                kode_urut = 1
+            } 
+            else {
+                kode_urut = generatenumber.generateNumber(detailBarang.kode_urut || 0)
+            }
+            console.log("KODE URUT : ", kode_urut)
+
+            let insertDetailBarang : TrxBarangPersediaanDetail2 = await TrxBarangPersediaanDetail2.create({
+                nomor_dokumen : nomor_dokumen,
+                kode_barang : dataPenampung.kode_barang,
+                kode_barang_persediaan : dataPenampung.kode_barang_persediaan,
+                tahun : dataPenampung.tahun,
+                kode_urut : kode_urut,
+                kode_unit : dataPenampung.kode_unit,
+                harga_satuan : dataPenampung.harga_satuan,
+                status_pemakaian : status_pemakaian.option1,
+                pakai_unit : pakai_unit.option1,
+                kuantitas : dataPenampung.kuantitas,
+                kuantitas_gerak : dataPenampung.kuantitas
+            }, {transaction : t})
+            
+            if(!insertDetailBarang) {
+                return [null, {code : 499, message : "Data Detail Barang Gagal Masuk"}]
+            }
+        }
+
+        await t.commit()
+
+        return [exBarangPenampung, null]
+    } catch (error : any) {
+        await t.rollback()
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const getDataStorePromise = async ()  :  Promise<[any | null, any | null]> => {
+    try {
+        const BarangBast : TrxBastPersediaan[] = await TrxBastPersediaan.findAll({
+            where : {
+                kode_persediaan : 2,
+                status : 1
+            },
+            include : [
+                {
+                    model : TrxBarangPenampung,
+                    as : "trxbarangpenampung", 
+                    attributes : {
+                        exclude : ['uch','udch']
+                    }
+                }
+            ],
+            order : [["udcr","ASC"]]
+        })
+
+        if(BarangBast.length === 0) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        return [BarangBast, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     getBarangPromise,
     getBarangPromiseProses,
@@ -1239,5 +1484,11 @@ export default {
     hapusBastByUnit, 
     pembelianUpload2,
     pembelianUpload3,
-    DetailBarangExist2
+    DetailBarangExist2,
+    //FLOW IDEAL 
+    storeDataPromiseNew,
+    ubahKodeBarang,
+    kirimKasubagNew,
+    storeDataParafKasubag,
+    getDataStorePromise
 }

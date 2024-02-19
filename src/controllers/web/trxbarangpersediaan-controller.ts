@@ -16,6 +16,8 @@ export type BarangPromise = {
         ucr : string
 }
 
+
+
 export type BarangExcelRequest = {
         kode_barang : string | null
         nama_barang : string | null
@@ -92,6 +94,52 @@ export type BastResponse = {
     uch : string | null;
     udcr : Date | undefined;
     udch : Date | undefined;
+}
+
+export type BarangPromiseNew = {
+    kode_barang_persediaan : string,
+    kuantitas : number,
+    satuan : string | null,
+    harga_satuan : number,
+    harga_total : number,
+    uch : string | null
+}
+
+export type RequestBarangPromise = {
+    kode_barang_persediaan : string,
+    kuantitas : number,
+    satuan : string | null,
+    harga_satuan : number,
+    harga_total : number,
+    uch : string | null
+}
+
+export type StoreBarangPromiseNew = {
+        nomor_dokumen : string,
+        nama_penyedia : string | null,
+        tanggal_dokumen : Date | undefined,
+        kode_unit : string,
+        status : string,
+        tanggal_pembukuan : Date | undefined,
+        kode_persediaan : number,
+        tahun : string,
+        ucr : string,
+        alasan : Text | null, 
+        nilai_total : number | null,
+        BarangPromise : Array<BarangPromiseNew>,
+}
+
+export type PenampungResponse = {
+    nomor_dokumen : string;
+	kode_barang : string | null;
+	kode_urut : number;
+	kode_barang_persediaan : string | null;
+	tahun : string | null;
+	kode_unit : string | null;
+	harga_satuan : number | null;
+    kuantitas : number | null;
+	harga_total : number | null;
+	uch : string | null;
 }
 
 const getForm = async (
@@ -452,6 +500,89 @@ const hapusBastByUnit =async (
     }
 }
 
+
+// ============================ FLOW IDEAL =================================
+
+const storeDataPromiseNew = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) => {
+    try {
+        const request : StoreBarangPromiseNew = req.body
+
+        const [store, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.storeDataPromiseNew(request)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 201, store)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const ubahKodeBarang = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise <void> => {
+    try {
+        const kode_urut : number = parseInt(req.params.kode_urut)
+        const kode_barang_persediaan : Omit<RequestBarangPromise,
+        "kuantitas" |
+        "satuan" | 
+        "harga_satuan" | 
+        "harga_total"> = req.body
+        const [trxPenampung, err] : [PenampungResponse, IErrorResponse] = await trxBarangPersediaanService.ubahKodeBarang(kode_urut, kode_barang_persediaan)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 202, trxPenampung)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const kirimKasubagNew = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise <void> => {
+    try {
+        const nomor_dokumen : any = req.query.nomor_dokumen
+
+        const [trxbast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.kirimKasubagNew(nomor_dokumen)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 202, trxbast)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const storeDataParafKasubag = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise <void> => {
+    try {
+        const nomor_dokumen : any = req.query.nomor_dokumen
+
+        const [trxbarangpenampung, err] : [PenampungResponse, IErrorResponse] = await trxBarangPersediaanService.storeDataParafKasubag(nomor_dokumen)
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 201, trxbarangpenampung)
+    } catch (error) {
+        next(error)
+    }
+}
+
 export default {
     getForm,
     getBarangPromise,
@@ -470,5 +601,11 @@ export default {
     hapusBastByUnit,
     pembelianUpload2,
     pembelianUpload3,
-    DetailBarangExist2
+    DetailBarangExist2,
+    //FLOW PROPER
+    storeDataPromiseNew,
+    ubahKodeBarang,
+    kirimKasubagNew,
+    storeDataParafKasubag,
+
 }

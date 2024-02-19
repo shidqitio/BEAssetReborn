@@ -43,4 +43,13 @@ routes.delete("/hapus-excel/:kode", trxbarangpersediaanController.hapusBastByUni
 
 routes.get("/baru/view-excel/detail/:kode_barang/:kode_unit", trxbarangpersediaanController.DetailBarangExist2)
 
+//Proper  Flow 
+routes.post("/store-promise/proper", trxbarangpersediaanController.storeDataPromiseNew);
+
+routes.put("/update-kode-barang/proper/:kode_urut", trxbarangpersediaanController.ubahKodeBarang);
+
+routes.put("/kirim-kasubag/proper", trxbarangpersediaanController.kirimKasubagNew);
+
+routes.post("/store-paraf/proper", trxbarangpersediaanController.storeDataParafKasubag)
+
 export default routes
