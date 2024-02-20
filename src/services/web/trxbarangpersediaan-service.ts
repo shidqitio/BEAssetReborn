@@ -20,6 +20,7 @@ import { removeFile, removeFileName } from "../../utils/remove-file";
 dotenv.config()
 import fs from "fs/promises";
 import path from "path"
+import axios from "axios";
 
 
 
@@ -1293,6 +1294,12 @@ const storeDataPromiseNew = async (
             BarangPromise.push(penampungInsert)
         }
 
+        const updateData = await axios.put(`${process.env.HOST_PROMISE}/api/eksternal/update_aset_persedian`, {
+            "modul" : "sibela",
+            "penyedia" : "dpt",
+            "id_permintaan" : request.id_permintaan
+        })
+
         t.commit()
 
         return [newBast, null]
@@ -1466,6 +1473,65 @@ const getDataStorePromise = async ()  :  Promise<[any | null, any | null]> => {
     }
 }
 
+const getDataKasubag = async () :  Promise<[any | null, any | null]> => {
+    try {
+        const BarangBast : TrxBastPersediaan[] = await TrxBastPersediaan.findAll({
+            where : {
+                kode_persediaan : 2,
+                status : 2
+            },
+            include : [
+                {
+                    model : TrxBarangPenampung,
+                    as : "trxbarangpenampung", 
+                    attributes : {
+                        exclude : ['uch','udch']
+                    }
+                }
+            ],
+            order : [["udcr","ASC"]]
+        })
+
+        if(BarangBast.length === 0) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        return [BarangBast, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
+const getDataAkhir = async () :  Promise<[any | null, any | null]> => {
+    try {
+        const BarangBast : TrxBastPersediaan[] = await TrxBastPersediaan.findAll({
+            where : {
+                kode_persediaan : 2,
+                status : 3
+            },
+            include : [
+                {
+                    model : TrxBarangPersediaanDetail2,
+                    as : "trxpersediaandetail2", 
+                    attributes : {
+                        exclude : ['uch','udch']
+                    }
+                }
+            ],
+            order : [["udcr","ASC"]]
+        })
+
+
+        if(BarangBast.length === 0) {
+            return [null, {code : 499, message : "Data Tidak Ada"}]
+        }
+
+        return [BarangBast, null]
+    } catch (error : any) {
+        return [null, {code : 500, message : error.message}]
+    }
+}
+
 export default {
     getBarangPromise,
     getBarangPromiseProses,
@@ -1490,5 +1556,7 @@ export default {
     ubahKodeBarang,
     kirimKasubagNew,
     storeDataParafKasubag,
-    getDataStorePromise
+    getDataStorePromise,
+    getDataKasubag,
+    getDataAkhir
 }

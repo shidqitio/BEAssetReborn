@@ -583,6 +583,59 @@ const storeDataParafKasubag = async (
     }
 }
 
+const getDataStorePromise = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const [bast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.getDataStorePromise()
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, bast)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+const getDataKasubag = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const [bast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.getDataKasubag()
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, bast)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+const getDataAkhir = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const [bast, err] : [BastResponse, IErrorResponse] = await trxBarangPersediaanService.getDataAkhir()
+
+        if(err) {
+            throw new CustomError(err.code, err.message)
+        }
+
+        responseSuccess(res, 200, bast)
+
+    } catch (error) {
+        next(error)
+    }
+}
 export default {
     getForm,
     getBarangPromise,
@@ -607,5 +660,8 @@ export default {
     ubahKodeBarang,
     kirimKasubagNew,
     storeDataParafKasubag,
+    getDataStorePromise,
+    getDataKasubag,
+    getDataAkhir,
 
 }
