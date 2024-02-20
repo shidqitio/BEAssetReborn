@@ -52,4 +52,10 @@ routes.put("/kirim-kasubag/proper", trxbarangpersediaanController.kirimKasubagNe
 
 routes.post("/store-paraf/proper", trxbarangpersediaanController.storeDataParafKasubag)
 
+routes.get("/petugas/get-data", trxbarangpersediaanController.getDataStorePromise)
+
+routes.get("/kasubag/get-data", trxbarangpersediaanController.getDataKasubag)
+
+routes.get("/akhir/get-data", trxbarangpersediaanController.getDataAkhir)
+
 export default routes
