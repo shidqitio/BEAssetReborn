@@ -8,6 +8,7 @@ export interface ITrxPenyusutan {
 	nilai_item : number | null,
 	tanggal_penyusutan : Date | null,
 	nilai_susut : number | null,
+    beban_penyusutan : number | null,
 	angka_penyusutan : number | null,
 	penyusutan_ke : number | null,
     penyusutan : string | null,
@@ -36,6 +37,7 @@ implements ITrxPenyusutan {
     declare nup : string;
 	declare nilai_item : number | null;
 	declare tanggal_penyusutan : Date | null;
+    declare beban_penyusutan : number | null;
 	declare nilai_susut : number | null;
 	declare angka_penyusutan : number | null;
 	declare penyusutan_ke : number | null;
@@ -68,6 +70,10 @@ TrxPenyusutan.init(
         },
 	    nilai_susut : {
             type : DataTypes.DECIMAL(),
+            allowNull : true
+        },
+        beban_penyusutan : {
+            type : DataTypes.DECIMAL(), 
             allowNull : true
         },
 	    angka_penyusutan : {

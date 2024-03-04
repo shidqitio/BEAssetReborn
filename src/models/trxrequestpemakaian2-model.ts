@@ -123,7 +123,7 @@ TrxRequestPemakaian2.init(
     },
     {
         sequelize : db,
-        tableName : "trx_request_pemakaian_2",
+        tableName : "trx_request_pemakaian_new",
         modelName : "TrxRequestPemakaian2",
         underscored : true,
         createdAt : "udcr",

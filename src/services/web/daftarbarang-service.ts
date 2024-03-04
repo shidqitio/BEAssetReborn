@@ -94,7 +94,7 @@ const updateNup =async (
               //Metode Penyusutan 
               let metode_penyusutan = findbarang[i].metode_penyusutan
               //Pengurang 
-              let pengurang : number = nilai / umur
+              let pengurang : number = Math.round(nilai / umur)
               let array_data : any = []
 
               
@@ -115,7 +115,7 @@ const updateNup =async (
 
               if(metode_penyusutan === "Straight Line") {
                 let j : number
-                for(j = 0 ; j < umur ; j++) {
+                for(j = 1 ; j <= umur ; j++) {
                   let kali : number = pengurang * j
                   let akhir : number = nilai - kali
                   let timestamp = tanggal_oleh 
@@ -125,6 +125,7 @@ const updateNup =async (
                   console.log("TES STRAIGHT LINE : ",tes, nup, akhir,date.toISOString())
                   array_data.push({
                     nup               : nup,
+                    beban_penyusutan : pengurang, 
                     nilai_susut       : kali,
                     nilai_item        : nilai,
                     tanggal_penyusutan: date.toISOString().substr(0, 10),

@@ -160,7 +160,7 @@ TrxBarangPersediaanDetail2.init(
 	},
 	{
 		sequelize : db,
-        tableName : "trx_barang_persediaan_detail_2",
+        tableName : "trx_barang_persediaan_detail_new",
         modelName : "TrxBarangPersediaanDetailBaru2",
         underscored : true,
         createdAt : "udcr",

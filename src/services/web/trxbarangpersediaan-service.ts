@@ -1366,7 +1366,7 @@ const kirimKasubagNew = async (
 }
 
 const storeDataParafKasubag = async (
-    nomor_dokumen:string) :  Promise<[any | null, any | null]>  => {
+    nomor_dokumen:string, tanggal_pembukuan : Date) :  Promise<[any | null, any | null]>  => {
     const t = await db.transaction()
     try {
         console.log(nomor_dokumen)
@@ -1377,6 +1377,7 @@ const storeDataParafKasubag = async (
         }
 
         exBast.status = 3;
+        exBast.tanggal_pembukuan = tanggal_pembukuan
         
         const response = await exBast.save({transaction : t})
 

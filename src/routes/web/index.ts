@@ -8,6 +8,9 @@ import daftarbarangRoutes from "./daftarbarang-route"
 import ruangRoutes from "./ruang-route"
 import trxinventarisasiRoutes from "./trxinventarisasi-route"
 
+//Laporan Asset 
+import laporanassetRoutes from "./laporanasset-route"
+
 //PERSEDIAAN
 import assetpersediaanRoutes from "./assetpersediaan-route"
 import trxbarangpersediaanRoutes from "./trxbarangpersediaan-route"
@@ -49,5 +52,7 @@ routes.use("/reklasifikasi", reklasifikasiRoutes)
 routes.use("/laporan-barang-persediaan", laporanPersediaanRoutes)
 
 routes.use("/laporan-rincian-barang", laporanRincianBarangRoutes)
+
+routes.use("/laporan-asset", laporanassetRoutes)
 
 export default routes

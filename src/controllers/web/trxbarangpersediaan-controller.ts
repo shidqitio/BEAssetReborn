@@ -125,6 +125,7 @@ export type StoreBarangPromiseNew = {
         tahun : string,
         ucr : string,
         alasan : Text | null, 
+        id_permintaan : string | null,
         nilai_total : number | null,
         BarangPromise : Array<BarangPromiseNew>,
 }
@@ -570,8 +571,9 @@ const storeDataParafKasubag = async (
     next:NextFunction) : Promise <void> => {
     try {
         const nomor_dokumen : any = req.query.nomor_dokumen
+        const tanggal_pembukuan : Date = req.body.tanggal_pembukuan
 
-        const [trxbarangpenampung, err] : [PenampungResponse, IErrorResponse] = await trxBarangPersediaanService.storeDataParafKasubag(nomor_dokumen)
+        const [trxbarangpenampung, err] : [PenampungResponse, IErrorResponse] = await trxBarangPersediaanService.storeDataParafKasubag(nomor_dokumen,tanggal_pembukuan)
 
         if(err) {
             throw new CustomError(err.code, err.message)
