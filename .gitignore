@@ -1,5 +1,6 @@
 # Ignore node_modules directory
 node_modules/
+node_modules
 
 # Ignore logs and temporary files
 logs/
@@ -26,3 +27,9 @@ target/
 # Ignore OS-generated files
 Thumbs.db
 .DS_Store
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules

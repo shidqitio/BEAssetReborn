@@ -139,6 +139,14 @@ const LaporanAsset = async (tanggal_awal : string, tanggal_akhir : string) : Pro
     }
 }
 
+// const LaporanAssetPenyusutan = async (tanggal_awal:string, tanggal_akhir:string) : Promise <[any | null, any | null]> => {
+//     try {
+        
+//     } catch (error) {
+        
+//     }
+// }
+
 export default {
     LaporanAsset
 }

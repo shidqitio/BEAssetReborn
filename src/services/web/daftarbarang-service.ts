@@ -115,7 +115,7 @@ const updateNup =async (
 
               if(metode_penyusutan === "Straight Line") {
                 let j : number
-                for(j = 1 ; j <= umur ; j++) {
+                for(j = 0 ; j <= umur ; j++) {
                   let kali : number = pengurang * j
                   let akhir : number = nilai - kali
                   let timestamp = tanggal_oleh 
