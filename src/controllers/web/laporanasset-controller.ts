@@ -13,7 +13,7 @@ export type AssetResponse = {
 const LaporanAsset = async (
     req:Request,
     res:Response,
-    next:NextFunction) => {
+    next:NextFunction) : Promise<void>=> {
     try {
         let tanggal_awal = req.body.tanggal_awal
         let tanggal_akhir = req.body.tanggal_akhir
@@ -25,6 +25,42 @@ const LaporanAsset = async (
     }
 }
 
+const LaporatAssetlvl5  = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void>=> {
+    try {
+        let tanggal_awal = req.body.tanggal_awal
+        let tanggal_akhir = req.body.tanggal_akhir
+
+        const [Asset, err] : [AssetResponse, IErrorResponse] = await laporanassetservice.LaporatAssetlvl5(tanggal_awal, tanggal_akhir)
+
+        responseSuccess(res, 200, Asset)
+
+    } catch (error) {
+         next(error)
+    }
+}
+
+const LaporanAssetLevel6 = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        let tanggal_awal = req.body.tanggal_awal
+        let tanggal_akhir = req.body.tanggal_akhir
+
+        const [Asset, err] : [AssetResponse, IErrorResponse] = await laporanassetservice.LaporanAssetLevel6(tanggal_awal, tanggal_akhir)
+
+        responseSuccess(res, 200, Asset)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 export default {
-    LaporanAsset
+    LaporanAsset,
+    LaporatAssetlvl5,
+    LaporanAssetLevel6
 }
